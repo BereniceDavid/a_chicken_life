@@ -157,7 +157,7 @@ body {
 	height: 100%;
 	width: 350px;	
 	padding: 10px;
-	background-color: #010101;
+	background-color: #d35400;
 }
 
 	/** eggs_count **/
@@ -166,7 +166,7 @@ body {
 {
 	height: 50px;
 	z-index: 10;
-	background-color: #fefefe;
+	background-color: #e67e22;
 }
 
 .eggs_content
@@ -178,12 +178,21 @@ body {
 
 .eggs_content .number_eggs
 {
-	color: #333333;	
-	font-size: 20px;
+	color: #f1c40f;	
+	font-size: 30px;
 	position: absolute; 
 	top: 50%;
 	left: 50%;
 	transform: translateY(-50%) translateX(-50%);
+}
+
+.gold
+{
+	width: 30px;
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
 }
 
 	/** tabs **/
@@ -193,7 +202,7 @@ body {
 	margin-top: 10px;
 	height: 100px;
 	z-index: 10;
-	background-color: #fefefe;
+	background-color: #e67e22;
 }
 
 .tabs_content
@@ -210,26 +219,31 @@ body {
 
 .tabs_content ul li
 {
-	background-color: #333333;	
+	background-color: #e67e22;	
 	width: 110px;
 	height: 100px;
 	display: inline-block;
-	border: 1px #fefefe inset;
+	position: relative;
 }
 
-.tabs_content ul li:nth-child(1)
+.tabs_content ul li:hover
 {
-	border-right: none;
+	cursor: pointer;
 }
 
-.tabs_content ul li:nth-child(3)
+.tabs_content ul li:nth-child(2)
 {
-	border-left: none;
+	border-right: 1px #fefefe solid;
+	border-left: 1px #fefefe solid;
 }
 
-.tabs_content ul li a
+.improvement, .consumables, .achievement
 {
-
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	width: 50px;
 }
 
   /** consumable **/
@@ -239,7 +253,7 @@ body {
 	margin-top: 10px;
 	height: 588px;
 	z-index: 10;
-	background-color: #fefefe;
+	background-color: #e67e22;
 	overflow: auto;
 }
 
@@ -258,11 +272,16 @@ body {
 {
 	display: inline-block;
 	width: 100%;
-	height: 50px;
+	height: 60px;
 	padding: 5px;
-	background-color: red;
-	border-bottom: 1px #fefefe inset;
+	background-color: #f28d4f;
+	margin-bottom: 5px;
 	position: relative;
+}
+
+.consumables_content ul li:hover, .boosts_content ul li:hover, .improvements_content ul li:hover
+{
+	cursor: pointer;
 }
 
 .boosts_content
@@ -281,50 +300,84 @@ body {
 	display: block;
 }
 
+.improvements_content.is-selected ul li
+{
+	background-color: #f28d4f;
+}
+
 /** content_list **/
 
 .logo_upgrade
 {
-	background-color: #000;
-	width: 39px;
-	height: 39px;
+	width: 49px;
+	height: 49px;
 	display: block;
+	position: relative;
+}
+
+.seeds_icon, .redpoule_icon
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+}
+
+.redpoule_icon
+{
+	height: 50px;
 }
 
 .name_upgrade
 {
 	position: absolute;
-	top: 40%;
+	top: 25%;
 	left: 59px;
 	transform: translateY(-40%);
 	color: #fefefe;
-	font-size: 14px;
+	font-size: 18px;
 }
 
 .price_upgrade
 {
 	position: absolute;
-	bottom: 0;
-	left: 64px;
-	transform: translateY(-60%);
-	color: #fefefe;
-	font-size: 12px;
+	top: 80%;
+	left: 95px;
+	transform: translateY(-80%);
+	font-size: 18px;
+	color: #f1c40f;
+}
+
+.gold_icon
+{
+	width: 30px;
+	position: absolute;
+	top: 80%;
+	left: 60px;
+	transform: translateY(-80%);
 }
 
 .number_upgrade
 {
 	position: absolute;
-	top: 40%;
-	right: 20px;
-	transform: translateY(-40%);
+	top: 80%;
+	right: 35px;
+	transform: translateY(-80%);
 	color: #fefefe;
-	font-size: 14px;
+	font-size: 18px;
+}
+
+.unit_lvl
+{
+	position: absolute;
+	top: 80%;
+	right: 10px;
+	transform: translateY(-80%);
+	color: #fefefe;
+	font-size: 18px;
 }
 
 
-
-/*<span class="name_upgrade">Masseur</span><span class="price_upgrade">10000OEUFS</span><span class="number_upgrade"></span></li>
-*/
 
 
 

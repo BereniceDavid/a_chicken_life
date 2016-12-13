@@ -22,8 +22,11 @@ boosts_content       = upgrades.querySelector('.boosts_content');
 for (i=0; i < list_container_content.length ; i++){
 
 list_container_content[i].addEventListener("click", function(){
-
 	var value_list = this.getAttribute('value'); 
+	for (i=0; i < list_container_content.length ; i++){
+		list_container_content[i].style.backgroundColor = "#e67e22";
+	}
+	this.style.backgroundColor = "#f28d4f";
 	if (value_list == 1){
 		improvements_content.classList.add('is-selected');
 		boosts_content.classList.remove('is-selected');
