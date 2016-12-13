@@ -13,160 +13,319 @@ body {
 	height: 100vh;
 }
 
-/** home_content **/
+/** stats_content **/
 
-.home
+.stats
 {
 	position: absolute;
-	left: 0;
-	top: 0;
-	width: 50%;
-	height: 500px;
-	background-color: green;
-	overflow: hidden;
+	top: 20px;
+	left: 20px;
 }
 
-.home_content
+.stats_content
 {
 	position: relative;
-	width: 100%;
-	height: 100%;
 }
 
-.home_background
+.stats_content .chicken_picture
 {
-	width: 100%;
-	height: 100%;
-}
-
-.chicken_home
-{
-	background-color: lightgreen; 
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
-	height: 80%;
-	width: 80%;
-}
-
-/** chicken_content **/
-
-.chicken
-{
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 50%;
-	height: 500px;
-	background-color: orange;
-}
-
-.chicken_content
-{
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-
-.chicken_stats
-{
-	width: 100%;
-	position: absolute;
-	top: 0;
-	right: 0;
-	height: 40px;
+	width: 90px;
+	height: 90px;
+	border-radius: 80px;
 	background-color: black;
 }
 
-.chicken_stats_content
-{
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-
-.eggs_count
+.stats_content .chicken_name
 {
 	position: absolute;
-	width: 50%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	background-color: #fff;
+	top: 20px;
+	left: 110px;
 }
 
-.eggs_count_content
+.stats_content .chicken_lvl
+{
+	position: absolute;
+	top: 45px;
+	left: 110px;
+	width: 400px;
+}
+
+.stats_content .chicken_lvl .chicken_lvl_content
 {
 	position: relative;
 	width: 100%;
 	height: 100%;
 }
 
-.eggs_count_txt
+.stats_content .chicken_lvl .chicken_lvl_content .current_lvl
 {
 	position: absolute;
 	top: 50%;
-	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
+	left: 150px;
+	transform: translateY(-50%);
 }
 
-.eggs_count .number_eggs
-{
-	padding-right: 10px;
-}
-
-.eggs_count .eggs_unit
-{
-	
-}
-
-.chicken_lvl
+.stats_content .chicken_lvl .chicken_lvl_content .lvl_bar
 {
 	position: absolute;
-	width: 50%;
-	height: 100%;
+	top: 50%;
+	left: 0;
+	width: 140px;
+	height: 10px;
+	border-radius: 80px;
+	background-color: grey;
+	transform: translateY(-50%);
+}
+
+.stats_content .lvl_bar_content
+{
+	position: relative;
+}
+
+.lvl_bar_content .bar_current_count
+{
+	position: absolute;
 	top: 0;
-	right: 0;
+	left: 0;
+	width: 80px;
+	height: 10px;
+	border-radius: 80px;
+	background-color: cyan;
+}
+
+.stats_content .chicken_starve_bar
+{
+	position: absolute;
+	top: 64%;
+	left: 110px;
+	width: 180px;
+	height: 10px;
+	border-radius: 80px;
 	background-color: grey;
 }
 
-.chicken_lvl_content
+.stats_content .chicken_starve_bar .chicken_starve_bar_content
+{
+	position: relative;
+}
+
+.chicken_starve_bar_content 
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 120px;
+	height: 10px;
+	border-radius: 80px;
+	background-color: lightgreen;
+}
+
+.stats_content .chicken_thirst_bar
+{
+	position: absolute;
+	top: 84%;
+	left: 110px;
+	width: 180px;
+	height: 10px;
+	border-radius: 80px;
+	background-color: grey;
+}
+
+.stats_content .chicken_thirst_bar .chicken_thirst_bar_content
+{
+	position: relative;
+}
+
+.chicken_thirst_bar_content .bar_current_count
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 160px;
+	height: 10px;
+	border-radius: 80px;
+	background-color: green;
+}
+
+/** upgrades **/
+
+.upgrades
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 350px;	
+	padding: 10px;
+	background-color: #010101;
+}
+
+	/** eggs_count **/
+
+.eggs
+{
+	height: 50px;
+	z-index: 10;
+	background-color: #fefefe;
+}
+
+.eggs_content
 {
 	position: relative;
 	width: 100%;
 	height: 100%;
 }
 
-.chicken_lvl_txt
+.eggs_content .number_eggs
 {
-	position: relative;
+	color: #333333;	
+	font-size: 20px;
+	position: absolute; 
 	top: 50%;
 	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
+	transform: translateY(-50%) translateX(-50%);
 }
 
-.chicken_lvl .current_lvl
+	/** tabs **/
+
+.tabs
 {
-	position: 
+	margin-top: 10px;
+	height: 100px;
+	z-index: 10;
+	background-color: #fefefe;
 }
 
-.chicken_name
+.tabs_content
 {
-	
+	position: relative;
+	width: 100%;
+	height: 100%;
 }
 
-.chiken_character
+.tabs_content ul
 {
-	ICI TA POULE
+	font-size: 0;
 }
 
-.chicken_starving_bar
+.tabs_content ul li
+{
+	background-color: #333333;	
+	width: 110px;
+	height: 100px;
+	display: inline-block;
+	border: 1px #fefefe inset;
+}
+
+.tabs_content ul li:nth-child(1)
+{
+	border-right: none;
+}
+
+.tabs_content ul li:nth-child(3)
+{
+	border-left: none;
+}
+
+.tabs_content ul li a
 {
 
 }
 
-.chicken_thirsty_bar
-{
+  /** consumable **/
 
+.list_upgrades
+{
+	margin-top: 10px;
+	height: 588px;
+	z-index: 10;
+	background-color: #fefefe;
+	overflow: auto;
 }
+
+.consumables_content
+{
+	position: relative;
+	display: none;
+}
+
+.consumables_content ul, .boosts_content ul, .improvements_content ul
+{
+	font-size: 0;
+}
+
+.consumables_content ul li, .boosts_content ul li, .improvements_content ul li 
+{
+	display: inline-block;
+	width: 100%;
+	height: 50px;
+	padding: 5px;
+	background-color: red;
+	border-bottom: 1px #fefefe inset;
+	position: relative;
+}
+
+.boosts_content
+{
+	position: relative;
+	display: none;
+}
+
+.improvements_content
+{
+	position: relative;
+	display: none;
+}
+
+.is-selected{
+	display: block;
+}
+
+/** content_list **/
+
+.logo_upgrade
+{
+	background-color: #000;
+	width: 39px;
+	height: 39px;
+	display: block;
+}
+
+.name_upgrade
+{
+	position: absolute;
+	top: 40%;
+	left: 59px;
+	transform: translateY(-40%);
+	color: #fefefe;
+	font-size: 14px;
+}
+
+.price_upgrade
+{
+	position: absolute;
+	bottom: 0;
+	left: 64px;
+	transform: translateY(-60%);
+	color: #fefefe;
+	font-size: 12px;
+}
+
+.number_upgrade
+{
+	position: absolute;
+	top: 40%;
+	right: 20px;
+	transform: translateY(-40%);
+	color: #fefefe;
+	font-size: 14px;
+}
+
+
+
+/*<span class="name_upgrade">Masseur</span><span class="price_upgrade">10000OEUFS</span><span class="number_upgrade"></span></li>
+*/
+
+
+
+
