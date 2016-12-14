@@ -225,7 +225,7 @@ loop();
 // 		if ( chicken.elements.container.classList.contains('dead') )
 // 			chicken.elements.container.classList.remove('dead');
 // 	}
->>>>>>> master
+
 	
 // 	if (has_bought_element == true)
 // 	{

@@ -130,7 +130,7 @@ function init(){
 init();
 
 clicker.el.container.chicken_house.addEventListener('click', function(){
-  if(chicken.elements.container.classList.contains('dead') == false){
+  if(chicken.elements.container.classList.contains('dead') == false && day_state == "day"){
     var random = Math.floor(Math.random()*10);
     //  clicker.el.container.chicken_house.oeuf.style.animationPlayState = "running";
     //  var elm = this.lastElementChild;
