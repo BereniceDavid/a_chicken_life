@@ -52,6 +52,24 @@ list_container_content[i].addEventListener("click", function(event){
 
 }
 
+var menu_state;
+
+document.querySelector('.menu_btn').addEventListener('click', function(event){
+
+	event.preventDefault();
+	if (menu_state == 1){
+		upgrades.classList.remove('menu_actived');
+		menu_state = 0;
+	}
+	else {
+		upgrades.classList.add('menu_actived');
+		menu_state = 1;
+	}
+
+	
+
+});
+
 // CHICKEN ANIMATION
 
 var chicken 								= {};

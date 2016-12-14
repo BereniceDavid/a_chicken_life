@@ -443,6 +443,18 @@ body {
 	color: black;
 	z-index: 100;
 }
+
+.menu_btn
+{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	text-transform: uppercase;
+	color: #fefefe;
+	font-size: 23px;
+	z-index: 800;
+}
+
 /** landscape **/
 
 .black_screen_top
@@ -781,10 +793,16 @@ body {
 	
 	.upgrades
 	{
-		display: none;
+		
 		width: 100vw;
 		top: 0;
-		right: -100vw;
+		transform: translateX(100vw);
+		transition: transform 0.3s ease-in;
+	}
+
+	.menu_actived
+	{
+		transform : translateX(0);
 	}
 
 	body
@@ -832,6 +850,10 @@ body {
 /* Medium and up */
 @media only screen and (min-width: 40em) {
 
+	.menu_btn
+	{
+		display: none;
+	}
 
 }
 
