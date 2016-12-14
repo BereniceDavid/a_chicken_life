@@ -76,8 +76,9 @@ var chicken 								= {};
 chicken.elements						= {};
 chicken.elements.container	= document.querySelector('.chicken_character');
 
-var cackle = new Audio('./src/cackle_chicken.mp3');
-//var soundtrack = new Audio('./src/soundtrack.mp3');
+var cackle = new Audio('./src/music/cackle_chicken.mp3');
+
+
 chicken.elements.container.addEventListener( 'click', function( event )
 {
 	cackle.play();
@@ -95,8 +96,11 @@ chicken.elements.container.addEventListener( 'click', function( event )
 
 /** canvas_noon_evening **/
 
-var state_time = document.querySelector('.pause_btn');
-	day_time   = document.querySelector('.day_time');
+var state_time = document.querySelector('.pause_btn'),
+		day_time = document.querySelector('.day_time');
+
+var day_state = 'day'; // day | night
+var soundtrack = document.querySelector('audio.soundtrack');
 
 state_time.addEventListener('click', function(event){
 	event.preventDefault();
@@ -105,15 +109,26 @@ state_time.addEventListener('click', function(event){
 		day_state = 'day';
 		document.querySelector('.black_screen_bot').style.opacity = "0";
 		document.querySelector('.black_screen_top').style.opacity = "0";
-		chicken.elements.container.classList.remove('sleeping');
-	}
-	else {
+		
+		//display normal chicken
+		if ( chicken.elements.container.classList.contains('sleeping') )
+			chicken.elements.container.classList.remove('sleeping');
+		
+		//launch day soundtrack
+		soundtrack.setAttribute('src','src/music/day_soundtrack.mp3');
+		
+	} else {
 		day_state = 'night';
 		document.querySelector('.black_screen_bot').style.opacity = "0.5";
 		document.querySelector('.black_screen_top').style.opacity = "0.5";
-		chicken.elements.container.classList.add('sleeping');
+		
+		//display sleeping chicken
+		if ( !chicken.elements.container.classList.contains('sleeping') )
+			chicken.elements.container.classList.add('sleeping');
+		
+		//launch night soundtrack
+		soundtrack.setAttribute('src','src/music/night_soundtrack.mp3');
 	}
-
 });
 
 var canvas = document.querySelector("canvas");
@@ -160,8 +175,6 @@ context.arc(canvas.width/2 + 420, canvas.height/2 - 300, 50, 0, 2 * Math.PI, tru
 context.fillStyle="yellow";
 context.fill();
 context.closePath();
-
-var day_state = 'day'; // day | night
 
 function loop() {
 	
