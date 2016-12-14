@@ -192,42 +192,42 @@ var has_bought_element = false;
 
 //faut faire le code : quand on achète un élément on passe la var has_bought_element à true pour un temps très court (pour faire apparaitre les coeurs et les faire disparaitre après) --> sauf si il dort --> ne pas passer à true : window set timeout
 
-setInterval(function()
-{ 
-	if ( (food < 5) && (food > 0) ) {
-		if ( !chicken.elements.container.classList.contains('sad') )
-			chicken.elements.container.classList.add('sad');
-	}
-	else if (food <= 0)
-	{
-		if ( chicken.elements.container.classList.contains('sad') )
-			chicken.elements.container.classList.remove('sad');
-		if ( !chicken.elements.container.classList.contains('dead') )
-			chicken.elements.container.classList.add('dead');
-	}
-	else
-	{
-		if ( chicken.elements.container.classList.contains('sad') )
-			chicken.elements.container.classList.remove('sad');
-		if ( chicken.elements.container.classList.contains('dead') )
-			chicken.elements.container.classList.remove('dead');
-	}
-	
-	if (sleeping == true)
-	{
-		if ( !chicken.elements.container.classList.contains('sleeping') )
-			chicken.elements.container.classList.add('sleeping');
-	}
-	else
-	{
-		if ( chicken.elements.container.classList.contains('sleeping') )
-			chicken.elements.container.classList.remove('sleeping');
-	}
-	
-	if (has_bought_element == true)
-	{
-		if ( !chicken.elements.container.classList.contains('happy') )
-			chicken.elements.container.classList.add('happy');
-	}
-	
-}, 1000);
+//setInterval(function()
+//{ 
+//	if ( (food < 5) && (food > 0) ) {
+//		if ( !chicken.elements.container.classList.contains('sad') )
+//			chicken.elements.container.classList.add('sad');
+//	}
+//	else if (food <= 0)
+//	{
+//		if ( chicken.elements.container.classList.contains('sad') )
+//			chicken.elements.container.classList.remove('sad');
+//		if ( !chicken.elements.container.classList.contains('dead') )
+//			chicken.elements.container.classList.add('dead');
+//	}
+//	else
+//	{
+//		if ( chicken.elements.container.classList.contains('sad') )
+//			chicken.elements.container.classList.remove('sad');
+//		if ( chicken.elements.container.classList.contains('dead') )
+//			chicken.elements.container.classList.remove('dead');
+//	}
+//	
+//	if (sleeping == true)
+//	{
+//		if ( !chicken.elements.container.classList.contains('sleeping') )
+//			chicken.elements.container.classList.add('sleeping');
+//	}
+//	else
+//	{
+//		if ( chicken.elements.container.classList.contains('sleeping') )
+//			chicken.elements.container.classList.remove('sleeping');
+//	}
+//	
+//	if (has_bought_element == true)
+//	{
+//		if ( !chicken.elements.container.classList.contains('happy') )
+//			chicken.elements.container.classList.add('happy');
+//	}
+//	
+//}, 1000);
