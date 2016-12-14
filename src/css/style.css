@@ -508,7 +508,7 @@ body {
 .st14{clip-path:url(#SVGID_6_);fill:#FFFBF1;}
 .st15{clip-path:url(#SVGID_8_);}
 .st16{fill:none;stroke:#161615;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:10;}
-.st17{fill:#677BB3;}
+.st17{fill:#A5B3DD;}
 .st18{font-family:'Palitoon-Regular';}
 .st19{font-size:42px;}
 .st20{font-size:52px;}
@@ -692,7 +692,7 @@ body {
 .chicken_character.sleeping .normal_chicken .eyes,
 .chicken_character.sleeping .sleeping_chicken
 {
-	transition: opacity 0.6s ease-in-out;
+	transition: opacity 0.6s ease-in-out 2s;
 }
 
 .chicken_character.sleeping .normal_chicken .comb,
@@ -708,12 +708,12 @@ body {
 
 .chicken_character.sleeping .sleeping_letters g:nth-of-type(1)
 {
-	animation: sleeping_chicken 1.5s ease-in-out infinite;
+	animation: sleeping_chicken 1.5s ease-in-out infinite 2s;
 }
 
 .chicken_character.sleeping .sleeping_letters g:nth-of-type(2)
 {
-	animation: sleeping_chicken 1.5s ease-in-out infinite 0.2s;
+	animation: sleeping_chicken 1.5s ease-in-out infinite 2.2s;
 }
 
 @keyframes sleeping_chicken
@@ -733,6 +733,26 @@ body {
 	{
 		opacity: 0;
 	}
+}
+
+/*animation out from sleeping to normal*/
+
+.chicken_character .normal_chicken .comb,
+.chicken_character .normal_chicken .eyes,
+.chicken_character .sleeping_chicken
+{
+	transition: opacity 0.6s ease-in-out 2s;
+}
+
+.chicken_character .normal_chicken .comb,
+.chicken_character .normal_chicken .eyes
+{
+	opacity: 1;
+}
+
+.chicken_character .sleeping_chicken
+{
+	opacity: 0;
 }
 
 /** happy chicken **/
