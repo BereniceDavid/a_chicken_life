@@ -398,10 +398,10 @@ body {
 {
 	position: absolute;
 	top: 80%;
-	right: 35px;
+	right: 60px;
 	transform: translateY(-80%);
 	color: #fefefe;
-	font-size: 18px;
+	font-size: 15px;
 }
 
 .unit_lvl
