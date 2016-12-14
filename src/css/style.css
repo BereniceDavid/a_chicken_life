@@ -1,8 +1,8 @@
 @font-face {
-    font-family:'myFont';
-    src:url(../fonts/palitoon.otf);
-    font-weight:400;
-    font-style:normal;
+  font-family:'myFont';
+  src:url(../fonts/palitoon.otf);
+  font-weight:400;
+  font-style:normal;
 }
 
 body {
@@ -15,6 +15,7 @@ body {
 
 .game_content
 {
+	z-index: 200;
 	position: relative;
 	width: 100vw;
 	height: 100vh;
@@ -159,6 +160,7 @@ body {
 .upgrades
 {
 	position: absolute;
+	z-index: 500;
 	top: 0;
 	right: 0;
 	height: 100%;
@@ -263,7 +265,7 @@ body {
 
 .list_upgrades
 {
-	height: 100vh;
+	height: 590px;
 	z-index: 10;
 	background-color: #e67e22;
 	overflow: auto;
@@ -399,6 +401,7 @@ body {
 
 .chicken_zone
 {
+	z-index: 600;
 	position: relative;
 	width: 100vw;
 	height: 100vh;
