@@ -445,11 +445,40 @@ body {
 }
 /** landscape **/
 
+.black_screen_top
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0;
+	width: calc(100vw - 350px);
+	height: calc(100vh * 2/3);	
+	z-index: 0;
+	transition: opacity 3.5s ease;
+}
+
+.black_screen_bot
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0;
+	width: calc(100vw - 350px);
+	height: calc(100vh * 1/3);	
+	z-index: 20;
+	transition: opacity 3.5s ease;
+}
+
 .landscape_sky
 {
+	position: absolute;
+	top: 0;
 	background-color: #60C8E4;
 	width: calc(100vw - 350px);
 	height: 100vh;	
+	z-index: -10;
 }
 
 .landscape_grass img
@@ -458,6 +487,7 @@ body {
 	bottom: 0;
 	width: calc(100vw - 350px);
 	height: calc(100vh * 1/3);	
+	z-index: 10;
 }
 /**** chicken svg animation ****/
 
@@ -486,11 +516,20 @@ body {
 .st22{fill:none;stroke:#161615;stroke-miterlimit:10;}
 .st23{clip-path:url(#SVGID_12_);}
 
+.chicken_zone
+{
+	position: relative;
+	width: calc(100vw - 350px);
+	height: 100vh;
+}
+
 .chicken_character {
-	top: 150px;
-	left: 150px;
+	top: 60%;
+	left: 50%;
 	position: absolute;
 	cursor: pointer;
+	z-index: 100;
+	transform: translateX(-50%) translateY(-50%);
 }
 
 .chicken_character svg 
@@ -720,7 +759,54 @@ body {
 
 @media only screen and (max-width: 39.9375em) {
 	
+	.upgrades
+	{
+		display: none;
+		width: 100vw;
+		top: 0;
+		right: -100vw;
+	}
 
+	body
+	{
+		overflow: hidden;
+	}
+
+	.chicken_zone
+	{
+		width: 100vw;
+	}
+
+	.landscape_grass img
+	{
+		width: 100vw;
+	}
+
+	.landscape_sky
+	{
+		width: 100vw;
+	}
+
+	.black_screen_top
+	{
+		width: 100vw;
+	}
+
+	.black_screen_bot
+	{
+		width: 100vw;
+	}
+
+	.canvas_zone
+	{
+		width: 100vw;
+	}
+
+	.pause_btn
+	{
+		bottom: 20px;
+		right: 20px;
+	}
 }
 
 /* Medium and up */
@@ -738,12 +824,12 @@ body {
 @media only screen and (max-width: 64em) 
 {
 	.landscape_grass img
-{
-	position: absolute;
-	bottom: 0;
-	width: auto;
-	height: calc(100vh * 1/3);	
-}
+	{
+		position: absolute;
+		bottom: 0;
+		width: 100vw;
+		height: calc(100vh * 1/3);	
+	}
 }
 
 /* Large and up */
