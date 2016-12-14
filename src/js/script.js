@@ -63,9 +63,13 @@ state_time.addEventListener('click', function(event){
 
 	if (day_state == 'night'){
 		day_state = 'day';
+		document.querySelector('.black_screen_bot').style.opacity = "0";
+		document.querySelector('.black_screen_top').style.opacity = "0";
 	}
 	else {
 		day_state = 'night';
+		document.querySelector('.black_screen_bot').style.opacity = "0.5";
+		document.querySelector('.black_screen_top').style.opacity = "0.5";
 	}
 
 });
@@ -74,13 +78,19 @@ var canvas = document.querySelector("canvas");
 	context = canvas.getContext("2d");
 
 function resize() {
-    canvas.width = window.innerWidth -350;
-    canvas.height = window.innerHeight;
+
+	if (window.matchMedia("(max-width: 39.9375em)").matches) {
+ 		canvas.width = window.innerWidth;
+    	canvas.height = window.innerHeight;
+	} else {
+	    canvas.width = window.innerWidth -350;
+    	canvas.height = window.innerHeight;
+	}
 }
 window.addEventListener('resize', resize);
 resize();
 
-var j = 0;
+var i = 0;
 
 var sun = function(color, r) {
     context.fillStyle = color;
@@ -123,34 +133,34 @@ function loop() {
     // rotate + move along x
     if (day_state == 'night'){
 
-	    if (j <=360) {
+	    if (i <=360) {
 	    	context.clearRect(0,0,canvas.width, canvas.height);
 	    	context.save();
 		    context.translate(canvas.width/2, canvas.height/2);
-	    	context.rotate(j * Math.PI / 180);
+	    	context.rotate(i * Math.PI / 180);
 	    	context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
-	    	if (j <= 100){
+	    	if (i <= 100){
 	    		sun('yellow', 50);
 	    	}
 	    	else{
-	    		sun('black', 50);
+	    		sun('white', 50);
 	    	}
 
 	    	context.restore();
 
-	    	j+=3;
+	    	i+=3;
 	    }
     }
     else {
      	
-	    if (j >= 0) {
+	    if (i >= 0) {
 	    	context.clearRect(0,0,canvas.width, canvas.height);
 	    	context.save();
 		    context.translate(canvas.width/2, canvas.height/2);
-	    	context.rotate(-j * Math.PI / 180);
+	    	context.rotate(-i * Math.PI / 180);
 	    	context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
-	    	if (j >= 280){
-	    		sun('black', 50);
+	    	if (i >= 280){
+	    		sun('white', 50);
 	    	}
 	    	else{
 	    		sun('yellow', 50);
@@ -158,7 +168,7 @@ function loop() {
 
 	    	context.restore();
 
-	    	j-=3;
+	    	i-=3;
 	    }
     }
 
