@@ -52,6 +52,24 @@ list_container_content[i].addEventListener("click", function(event){
 
 }
 
+var menu_state;
+
+document.querySelector('.menu_btn').addEventListener('click', function(event){
+
+	event.preventDefault();
+	if (menu_state == 1){
+		upgrades.classList.remove('menu_actived');
+		menu_state = 0;
+	}
+	else {
+		upgrades.classList.add('menu_actived');
+		menu_state = 1;
+	}
+
+	
+
+});
+
 // CHICKEN ANIMATION
 
 var chicken 								= {};
@@ -62,6 +80,9 @@ var cackle = new Audio('./src/cackle_chicken.mp3');
 //var soundtrack = new Audio('./src/soundtrack.mp3');
 chicken.elements.container.addEventListener( 'click', function( event )
 {
+	cackle.play();
+	cackle.currentTime = 0;
+	
 	event.preventDefault();
 	
 	chicken.elements.container.classList.add( 'active' );
@@ -101,36 +122,32 @@ var canvas = document.querySelector("canvas");
 function resize() {
 
 	if (window.matchMedia("(max-width: 39.9375em)").matches) {
- 		canvas.width = window.innerWidth;
-    	canvas.height = window.innerHeight;
+		canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 	} else {
-	    canvas.width = window.innerWidth -350;
-    	canvas.height = window.innerHeight;
+	  canvas.width = window.innerWidth -350;
+  	canvas.height = window.innerHeight;
 	}
 }
 window.addEventListener('resize', resize);
 resize();
 
-var i = 0;
+var j = 0;
 
 var sun = function(color, r) {
-    context.fillStyle = color;
-    
-    context.beginPath();
-    context.arc(0, 0, r, 0, 2 * Math.PI, true);
-    context.closePath();
-    
-    context.fill();
+  context.fillStyle = color;
+  context.beginPath();
+  context.arc(0, 0, r, 0, 2 * Math.PI, true);
+  context.closePath();
+  context.fill();
 }
 
 var moon = function(x, y, color, r){
 	context.fillStyle = color;
-    
-    context.beginPath();
-    context.arc(x, y, r, 0, 2 * Math.PI, true);
-    context.closePath();
-    
-    context.fill();
+  context.beginPath();
+  context.arc(x, y, r, 0, 2 * Math.PI, true);
+  context.closePath();
+  context.fill();
 }
 
 // context.translate(canvas.width/2, canvas.height/2);
@@ -147,53 +164,48 @@ context.closePath();
 var day_state = 'day'; // day | night
 
 function loop() {
-
 	
-    window.requestAnimationFrame(loop);
-    
-    // rotate + move along x
-    if (day_state == 'night'){
-
-	    if (i <=360) {
-	    	context.clearRect(0,0,canvas.width, canvas.height);
-	    	context.save();
-		    context.translate(canvas.width/2, canvas.height/2);
-	    	context.rotate(i * Math.PI / 180);
-	    	context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
-	    	if (i <= 100){
-	    		sun('yellow', 50);
-	    	}
-	    	else{
-	    		sun('white', 50);
-	    	}
-
-	    	context.restore();
-
-	    	i+=3;
+	window.requestAnimationFrame(loop);
+  
+	// rotate + move along x
+  if (day_state == 'night'){
+		if (j <=360) {
+	    context.clearRect(0,0,canvas.width, canvas.height);
+	    context.save();
+		  context.translate(canvas.width/2, canvas.height/2);
+	    context.rotate(j * Math.PI / 180);
+	    context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
+	    
+			if (j <= 100){
+	    	sun('yellow', 50);
 	    }
-    }
-    else {
-     	
-	    if (i >= 0) {
-	    	context.clearRect(0,0,canvas.width, canvas.height);
-	    	context.save();
-		    context.translate(canvas.width/2, canvas.height/2);
-	    	context.rotate(-i * Math.PI / 180);
-	    	context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
-	    	if (i >= 280){
-	    		sun('white', 50);
-	    	}
-	    	else{
-	    		sun('yellow', 50);
-	    	}
-
-	    	context.restore();
-
-	    	i-=3;
+	    else{
+	    	sun('white', 50);
 	    }
-    }
 
-    
+	    context.restore();
+
+	    j+=3;
+	  }
+  }
+  else {
+    if (j >= 0) {
+	  	context.clearRect(0,0,canvas.width, canvas.height);
+	    context.save();
+		  context.translate(canvas.width/2, canvas.height/2);
+	    context.rotate(-j * Math.PI / 180);
+	    context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
+	    if (j >= 280){
+	    	sun('white', 50);
+	    }
+	    else{
+	    	sun('yellow', 50);
+	    }
+			context.restore();
+
+	    j-=3;
+	  }
+  }
 };
 
 loop();
