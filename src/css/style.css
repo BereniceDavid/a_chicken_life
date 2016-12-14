@@ -1,15 +1,15 @@
 @font-face {
-  font-family:'myFont';
-  src:url(../fonts/palitoon.otf);
-  font-weight:400;
-  font-style:normal;
+  font-family: 'myFont';
+  src: url(../fonts/palitoon.otf);
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
 	background: #eee;
 	font-family:'myFont';
 	font-size: 14px;
-	user-select : none;
+	user-select: none;
 }
 
 /** game_content **/
@@ -136,8 +136,8 @@ body {
 	transform: scaleX(1);
 	transform-origin: 0 0;
 	will-change:transform;
-    will-change: background-color;
-    transition: all 0.3s;
+  will-change: background-color;
+  transition: all 0.3s;
 }
 
 .stats_content .chicken_thirst_bar
@@ -149,14 +149,14 @@ body {
 	height: 10px;
 	border-radius: 80px;
 	background-color: grey;
-    will-change: background-color;
-    transition: all 0.3s;
+  will-change: background-color;
+  transition: all 0.3s;
 }
 
 .stats_content .chicken_thirst_bar .chicken_thirst_bar_content
 {
 	position: relative;
-    transform: scaleX(1);
+  transform: scaleX(1);
 	transform-origin: 0 0;
 	will-change:transform;
 }
@@ -398,10 +398,10 @@ body {
 {
 	position: absolute;
 	top: 80%;
-	right: 35px;
+	right: 60px;
 	transform: translateY(-80%);
 	color: #fefefe;
-	font-size: 18px;
+	font-size: 15px;
 }
 
 .unit_lvl
@@ -445,11 +445,40 @@ body {
 }
 /** landscape **/
 
+.black_screen_top
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0;
+	width: calc(100vw - 350px);
+	height: calc(100vh * 2/3);	
+	z-index: 0;
+	transition: opacity 3.5s ease;
+}
+
+.black_screen_bot
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0;
+	width: calc(100vw - 350px);
+	height: calc(100vh * 1/3);	
+	z-index: 20;
+	transition: opacity 3.5s ease;
+}
+
 .landscape_sky
 {
+	position: absolute;
+	top: 0;
 	background-color: #60C8E4;
 	width: calc(100vw - 350px);
 	height: 100vh;	
+	z-index: -10;
 }
 
 .landscape_grass img
@@ -458,6 +487,7 @@ body {
 	bottom: 0;
 	width: calc(100vw - 350px);
 	height: calc(100vh * 1/3);	
+	z-index: 10;
 }
 /**** chicken svg animation ****/
 
@@ -478,7 +508,7 @@ body {
 .st14{clip-path:url(#SVGID_6_);fill:#FFFBF1;}
 .st15{clip-path:url(#SVGID_8_);}
 .st16{fill:none;stroke:#161615;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:10;}
-.st17{fill:#677BB3;}
+.st17{fill:#A5B3DD;}
 .st18{font-family:'Palitoon-Regular';}
 .st19{font-size:42px;}
 .st20{font-size:52px;}
@@ -486,11 +516,20 @@ body {
 .st22{fill:none;stroke:#161615;stroke-miterlimit:10;}
 .st23{clip-path:url(#SVGID_12_);}
 
+.chicken_zone
+{
+	position: relative;
+	width: calc(100vw - 350px);
+	height: 100vh;
+}
+
 .chicken_character {
-	top: 150px;
-	left: 150px;
+	top: 60%;
+	left: 50%;
 	position: absolute;
 	cursor: pointer;
+	z-index: 100;
+	transform: translateX(-50%) translateY(-50%);
 }
 
 .chicken_character svg 
@@ -653,7 +692,7 @@ body {
 .chicken_character.sleeping .normal_chicken .eyes,
 .chicken_character.sleeping .sleeping_chicken
 {
-	transition: opacity 0.6s ease-in-out;
+	transition: opacity 0.6s ease-in-out 2s;
 }
 
 .chicken_character.sleeping .normal_chicken .comb,
@@ -669,12 +708,12 @@ body {
 
 .chicken_character.sleeping .sleeping_letters g:nth-of-type(1)
 {
-	animation: sleeping_chicken 1.5s ease-in-out infinite;
+	animation: sleeping_chicken 1.5s ease-in-out infinite 2s;
 }
 
 .chicken_character.sleeping .sleeping_letters g:nth-of-type(2)
 {
-	animation: sleeping_chicken 1.5s ease-in-out infinite 0.2s;
+	animation: sleeping_chicken 1.5s ease-in-out infinite 2.2s;
 }
 
 @keyframes sleeping_chicken
@@ -694,6 +733,26 @@ body {
 	{
 		opacity: 0;
 	}
+}
+
+/*animation out from sleeping to normal*/
+
+.chicken_character .normal_chicken .comb,
+.chicken_character .normal_chicken .eyes,
+.chicken_character .sleeping_chicken
+{
+	transition: opacity 0.6s ease-in-out 2s;
+}
+
+.chicken_character .normal_chicken .comb,
+.chicken_character .normal_chicken .eyes
+{
+	opacity: 1;
+}
+
+.chicken_character .sleeping_chicken
+{
+	opacity: 0;
 }
 
 /** happy chicken **/
@@ -720,7 +779,54 @@ body {
 
 @media only screen and (max-width: 39.9375em) {
 	
+	.upgrades
+	{
+		display: none;
+		width: 100vw;
+		top: 0;
+		right: -100vw;
+	}
 
+	body
+	{
+		overflow: hidden;
+	}
+
+	.chicken_zone
+	{
+		width: 100vw;
+	}
+
+	.landscape_grass img
+	{
+		width: 100vw;
+	}
+
+	.landscape_sky
+	{
+		width: 100vw;
+	}
+
+	.black_screen_top
+	{
+		width: 100vw;
+	}
+
+	.black_screen_bot
+	{
+		width: 100vw;
+	}
+
+	.canvas_zone
+	{
+		width: 100vw;
+	}
+
+	.pause_btn
+	{
+		bottom: 20px;
+		right: 20px;
+	}
 }
 
 /* Medium and up */
@@ -738,12 +844,12 @@ body {
 @media only screen and (max-width: 64em) 
 {
 	.landscape_grass img
-{
-	position: absolute;
-	bottom: 0;
-	width: auto;
-	height: calc(100vh * 1/3);	
-}
+	{
+		position: absolute;
+		bottom: 0;
+		width: 100vw;
+		height: calc(100vh * 1/3);	
+	}
 }
 
 /* Large and up */

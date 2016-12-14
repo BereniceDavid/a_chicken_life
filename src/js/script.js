@@ -52,6 +52,25 @@ list_container_content[i].addEventListener("click", function(event){
 
 }
 
+// CHICKEN ANIMATION
+
+var chicken 								= {};
+chicken.elements						= {};
+chicken.elements.container	= document.querySelector('.chicken_character');
+
+var cackle = new Audio('./src/cackle_chicken.mp3');
+//var soundtrack = new Audio('./src/soundtrack.mp3');
+chicken.elements.container.addEventListener( 'click', function( event )
+{
+	event.preventDefault();
+	
+	chicken.elements.container.classList.add( 'active' );
+	
+	window.setTimeout( function()
+	{
+		chicken.elements.container.classList.remove( 'active' );
+	}, 100 );
+} );
 
 /** canvas_noon_evening **/
 
@@ -63,9 +82,15 @@ state_time.addEventListener('click', function(event){
 
 	if (day_state == 'night'){
 		day_state = 'day';
+		document.querySelector('.black_screen_bot').style.opacity = "0";
+		document.querySelector('.black_screen_top').style.opacity = "0";
+		chicken.elements.container.classList.remove('sleeping');
 	}
 	else {
 		day_state = 'night';
+		document.querySelector('.black_screen_bot').style.opacity = "0.5";
+		document.querySelector('.black_screen_top').style.opacity = "0.5";
+		chicken.elements.container.classList.add('sleeping');
 	}
 
 });
@@ -74,13 +99,19 @@ var canvas = document.querySelector("canvas");
 	context = canvas.getContext("2d");
 
 function resize() {
-    canvas.width = window.innerWidth -350;
-    canvas.height = window.innerHeight;
+
+	if (window.matchMedia("(max-width: 39.9375em)").matches) {
+ 		canvas.width = window.innerWidth;
+    	canvas.height = window.innerHeight;
+	} else {
+	    canvas.width = window.innerWidth -350;
+    	canvas.height = window.innerHeight;
+	}
 }
 window.addEventListener('resize', resize);
 resize();
 
-var j = 0;
+var i = 0;
 
 var sun = function(color, r) {
     context.fillStyle = color;
@@ -123,34 +154,34 @@ function loop() {
     // rotate + move along x
     if (day_state == 'night'){
 
-	    if (j <=360) {
+	    if (i <=360) {
 	    	context.clearRect(0,0,canvas.width, canvas.height);
 	    	context.save();
 		    context.translate(canvas.width/2, canvas.height/2);
-	    	context.rotate(j * Math.PI / 180);
+	    	context.rotate(i * Math.PI / 180);
 	    	context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
-	    	if (j <= 100){
+	    	if (i <= 100){
 	    		sun('yellow', 50);
 	    	}
 	    	else{
-	    		sun('black', 50);
+	    		sun('white', 50);
 	    	}
 
 	    	context.restore();
 
-	    	j+=3;
+	    	i+=3;
 	    }
     }
     else {
      	
-	    if (j >= 0) {
+	    if (i >= 0) {
 	    	context.clearRect(0,0,canvas.width, canvas.height);
 	    	context.save();
 		    context.translate(canvas.width/2, canvas.height/2);
-	    	context.rotate(-j * Math.PI / 180);
+	    	context.rotate(-i * Math.PI / 180);
 	    	context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
-	    	if (j >= 280){
-	    		sun('black', 50);
+	    	if (i >= 280){
+	    		sun('white', 50);
 	    	}
 	    	else{
 	    		sun('yellow', 50);
@@ -158,7 +189,7 @@ function loop() {
 
 	    	context.restore();
 
-	    	j-=3;
+	    	i-=3;
 	    }
     }
 
@@ -168,27 +199,44 @@ function loop() {
 loop();
 
 
-// CHICKEN ANIMATION
 
-var chicken 								= {};
-chicken.elements						= {};
-chicken.elements.container	= document.querySelector('.chicken_character');
+// var food = 10;
+// var has_bought_element = false;
 
-chicken.elements.container.addEventListener( 'click', function( event )
-{
-	event.preventDefault();
+// //faut faire le code : quand on achète un élément on passe la var has_bought_element à true pour un temps très court (pour faire apparaitre les coeurs et les faire disparaitre après) --> sauf si il dort --> ne pas passer à true : window set timeout
+
+// setInterval(function()
+// { 
+// 	if ( (food < 5) && (food > 0) ) {
+// 		if ( !chicken.elements.container.classList.contains('sad') )
+// 			chicken.elements.container.classList.add('sad');
+// 	}
+// 	else if (food <= 0)
+// 	{
+// 		if ( chicken.elements.container.classList.contains('sad') )
+// 			chicken.elements.container.classList.remove('sad');
+// 		if ( !chicken.elements.container.classList.contains('dead') )
+// 			chicken.elements.container.classList.add('dead');
+// 	}
+// 	else
+// 	{
+// 		if ( chicken.elements.container.classList.contains('sad') )
+// 			chicken.elements.container.classList.remove('sad');
+// 		if ( chicken.elements.container.classList.contains('dead') )
+// 			chicken.elements.container.classList.remove('dead');
+// 	}
+>>>>>>> master
 	
-	chicken.elements.container.classList.add( 'active' );
-	
-	window.setTimeout( function()
-	{
-		chicken.elements.container.classList.remove( 'active' );
-	}, 100 );
-} );
+// 	if (has_bought_element == true)
+// 	{
+// 		if ( !chicken.elements.container.classList.contains('happy') )
+// 			chicken.elements.container.classList.add('happy');
+// 	}
 
-var food = 10;
-var sleeping = false;
-var has_bought_element = false;
+
+//var food = 10;
+//var sleeping = false;
+//var has_bought_element = false;
 
 //faut faire le code : quand on achète un élément on passe la var has_bought_element à true pour un temps très court (pour faire apparaitre les coeurs et les faire disparaitre après) --> sauf si il dort --> ne pas passer à true : window set timeout
 
