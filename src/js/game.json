@@ -1,54 +1,43 @@
 var game = [
 	{
 		"level": 0,
-		"upgrades": [
-			{"name":"", "source":"../img/", "cost":20}
-		],
+		"upgrades": [],
 		"habitat": [
-			{"name":"Shadow", "source":"../img/habitat/"}
+			{"name":"Cardboard", "source":"../img/habitat/cardboard.svg", "cost":0}
 		]
 	},
 	{
 		"level": 1,
 		"upgrades": [
-			{"name":"Light", "source":"../img/ugrade/", "cost":30}
-		]
+			{"name":"Light", "source":"../img/ugrade/cardboard_light.svg", "cost":30}
+		],
+		"habitat": []
 	},
 	{
 		"level": 2,
 		"upgrades": [
 			{
-				"name":"Seeds", "source":"../img/upgrade/seeds.svg", "cost":20
+				"name":"Seeds", "source":"../img/upgrade/seeds.svg", "cost":5
 			},
 			{
-				"name":"Water", "source":"../img/upgrade/water.svg", "cost":20
+				"name":"Water", "source":"../img/upgrade/water.svg", "cost":5
 			},
-		]
+		],
+		"habitat": []
 	},
 	{
 		"level": 3,
-		"upgrades": [
-			{
-				"name":"Seeds", "source":"../img/upgrade/seeds.svg", "cost":20
-			}
-		]
+		"upgrades": [],
+		"habitat": []
 	},
 	{
 		"level": 4,
-		"upgrades": [
-			{
-				"name":"Seeds", "source":"../img/upgrade/seeds.svg", "cost":20
-			}
-		]
+		"upgrades": [],
+		"habitat": []
 	},
 	{
 		"level": 5,
-		"upgrades": [
-			{
-				"name":"Water", "source":"../img/upgrade/water.svg", "cost":20
-			}
-		],
-		"habitat": [
-			{"name":"Cage", "source":"../img/habitat/", "cost":100}
-		]
+		"upgrades": [],
+		"habitat": []
+	}
 ]
