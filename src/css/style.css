@@ -405,4 +405,259 @@ body {
 	z-index: -10;
 }
 
+/**** chicken svg animation ****/
 
+.st0{fill:#C61D1B;}
+.st1{fill:#CE2A28;}
+.st2{fill:#A27E13;}
+.st3{fill:#F08219;}
+.st4{fill:#EDB80E;}
+.st5{clip-path:url(#SVGID_2_);fill:#D2A116;}
+.st6{fill:#FFFBF1;}
+.st7{fill:#161615;}
+.st8{fill:#CC6C14;}
+.st9{fill:#DA7510;}
+.st10{fill:#BC6317;}
+.st11{fill:#F7C32E;}
+.st12{fill:#415394;}
+.st13{clip-path:url(#SVGID_4_);}
+.st14{clip-path:url(#SVGID_6_);fill:#FFFBF1;}
+.st15{clip-path:url(#SVGID_8_);}
+.st16{fill:none;stroke:#161615;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:10;}
+.st17{fill:#677BB3;}
+.st18{font-family:'Palitoon-Regular';}
+.st19{font-size:42px;}
+.st20{font-size:52px;}
+.st21{clip-path:url(#SVGID_10_);}
+.st22{fill:none;stroke:#161615;stroke-miterlimit:10;}
+.st23{clip-path:url(#SVGID_12_);}
+
+.chicken_character {
+	top: 150px;
+	left: 150px;
+	position: absolute;
+	cursor: pointer;
+}
+
+.chicken_character svg 
+{
+	height: 300px;
+	width: auto;
+}
+
+/** normal chicken **/
+
+.chicken_character .sleeping_chicken,
+.chicken_character .dead_chicken,
+.chicken_character .sad_chicken,
+.chicken_character .happy_chicken {
+	opacity: 0;
+}
+
+/* chicken legs */
+
+.chicken_character .paw_left 
+{
+	transform-origin: 100% 100%;
+}
+
+.chicken_character .paw_right 
+{
+	transform-origin: 0% 0%;
+}
+
+.chicken_character .paw_left,
+.chicken_character .paw_right 
+{
+	transition: transform 0.13s ease-in-out;
+}
+
+.chicken_character.active .paw_left,
+.chicken_character.active .paw_left,
+.chicken_character.active .paw_left,
+.chicken_character.active .paw_left,
+.chicken_character.active .paw_left
+{
+	transform: rotate(8deg) translateX(-3px);
+}
+
+.chicken_character.active .paw_right
+{
+	transform: rotate(-8deg) translateX(3px);
+}
+
+/* chicken eyes */
+
+.chicken_character .st7,
+.chicken_character circle.st6 
+{
+	transition: transform 0.13s ease-in-out;
+	transform-origin: 50% 50%;
+}
+
+.chicken_character.active .st7,
+.chicken_character.active circle.st6 
+{
+	transform: scale(1.1);
+}
+
+/* chicken wings */
+
+.chicken_character .wing_left
+{
+	transform-origin: 100% 100%;
+}
+
+.chicken_character .wing_right
+{
+	transform-origin: 0% 100%;
+}
+
+.chicken_character .wing_left,
+.chicken_character .wing_right 
+{
+	transition: transform 0.1s ease-in-out;
+}
+
+.chicken_character.active .wing_left
+{
+	transform: rotate(-2deg) translateY(-3px);
+}
+
+.chicken_character.active .wing_right
+{
+	transform: rotate(2deg) translateY(-3px);
+}
+
+/* chicken comb */
+
+.chicken_character .comb 
+{
+	transform-origin: 50% 100%;
+	transition: transform 0.1s ease-in-out;
+}
+
+.chicken_character.active .comb
+{
+	transform: rotate(-1deg);
+}
+
+/** sad chicken **/
+
+.chicken_character.sad .sad_chicken,
+.chicken_character.sad .normal_chicken .eyes,
+.chicken_character.sad .normal_chicken .body .st4,
+.chicken_character.sad .normal_chicken .body .st5,
+.chicken_character.sad .normal_chicken .st11
+{
+	transition: all 0.6s ease-in-out;
+}
+
+.chicken_character.sad .sad_chicken {
+	opacity: 1;
+}
+
+.chicken_character.sad .normal_chicken .eyes,
+.chicken_character.sad .dead_chicken .eyes
+{
+	opacity: 0;
+}
+
+.chicken_character.sad .normal_chicken .body .st4{fill: #ebcd6b;}
+.chicken_character.sad .normal_chicken .body .st5{fill: #e3bb4b;}
+.chicken_character.sad .normal_chicken .st11{fill:#efd58c;}
+
+/** dead chicken **/
+
+.chicken_character.dead .dead_chicken,
+.chicken_character.dead .normal_chicken .eyes,
+.chicken_character.dead .normal_chicken .body .st4,
+.chicken_character.dead .normal_chicken .body .st5,
+.chicken_character.dead .normal_chicken .st11
+{
+	transition: all 0.6s ease-in-out;
+}
+
+.chicken_character.dead .dead_chicken 
+{
+	opacity: 1;
+}
+
+.chicken_character.dead .normal_chicken .eyes,
+.chicken_character.dead .sad_chicken .eyes
+{
+	opacity: 0;
+}
+
+.chicken_character.dead .normal_chicken .body .st4{fill: #f5de92;}
+.chicken_character.dead .normal_chicken .body .st5{fill: #eac661;}
+.chicken_character.dead .normal_chicken .st11{fill:#f2db9c;}
+
+/** sleeping chicken **/
+
+.chicken_character.sleeping .normal_chicken .comb,
+.chicken_character.sleeping .normal_chicken .eyes,
+.chicken_character.sleeping .sleeping_chicken
+{
+	transition: opacity 0.6s ease-in-out;
+}
+
+.chicken_character.sleeping .normal_chicken .comb,
+.chicken_character.sleeping .normal_chicken .eyes
+{
+	opacity: 0;
+}
+
+.chicken_character.sleeping .sleeping_chicken
+{
+	opacity: 1;
+}
+
+.chicken_character.sleeping .sleeping_letters g:nth-of-type(1)
+{
+	animation: sleeping_chicken 1.5s ease-in-out infinite;
+}
+
+.chicken_character.sleeping .sleeping_letters g:nth-of-type(2)
+{
+	animation: sleeping_chicken 1.5s ease-in-out infinite 0.2s;
+}
+
+@keyframes sleeping_chicken
+{
+	0%
+	{
+		opacity: 0;
+	}
+	
+	50%
+	{
+		transform: translate(10px, 10px);
+		opacity: 1;
+	}
+	
+	100%
+	{
+		opacity: 0;
+	}
+}
+
+/** happy chicken **/
+
+.chicken_character.happy .happy_chicken,
+.chicken_character.happy .normal_chicken .eyes,
+.chicken_character.happy .sad_chicken .eyes
+{
+	transition: all 0.6s ease-in-out;
+}
+
+.chicken_character.happy .normal_chicken .eyes,
+.chicken_character.happy .sad_chicken .eyes
+{
+	opacity: 0;
+}
+
+.chicken_character.happy .happy_chicken
+{
+	opacity: 1;
+}
