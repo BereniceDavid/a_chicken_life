@@ -81,8 +81,10 @@ var cackle = new Audio('./src/music/cackle_chicken.mp3');
 
 chicken.elements.container.addEventListener( 'click', function( event )
 {
-	cackle.play();
-	cackle.currentTime = 0;
+	if (day_state == 'day') {
+		cackle.play();
+		cackle.currentTime = 0;
+	}
 	
 	event.preventDefault();
 	
