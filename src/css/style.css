@@ -1,6 +1,13 @@
+@font-face {
+    font-family:'myFont';
+    src:url(../fonts/palitoon.otf);
+    font-weight:400;
+    font-style:normal;
+}
+
 body {
 	background: #eee;
-	font-family: Helvetica, Arial;
+	font-family:'myFont';
 	font-size: 14px;
 }
 
@@ -158,6 +165,7 @@ body {
 	width: 350px;	
 	padding: 10px;
 	background-color: #d35400;
+	overflow: auto;
 }
 
 	/** eggs_count **/
@@ -231,6 +239,11 @@ body {
 	cursor: pointer;
 }
 
+.tabs_content ul li:nth-child(1)
+{
+	background-color: #f28d4f;
+}
+
 .tabs_content ul li:nth-child(2)
 {
 	border-right: 1px #fefefe solid;
@@ -250,8 +263,7 @@ body {
 
 .list_upgrades
 {
-	margin-top: 10px;
-	height: 588px;
+	height: 100vh;
 	z-index: 10;
 	background-color: #e67e22;
 	overflow: auto;
@@ -277,6 +289,7 @@ body {
 	background-color: #f28d4f;
 	margin-bottom: 5px;
 	position: relative;
+	font-family:'myFont';
 }
 
 .consumables_content ul li:hover, .boosts_content ul li:hover, .improvements_content ul li:hover
@@ -315,12 +328,17 @@ body {
 	position: relative;
 }
 
-.seeds_icon, .redpoule_icon
+.seeds_icon, .redpoule_icon, .water_icon, .noodle_icon, .pizza_icon
 {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translateY(-50%) translateX(-50%);
+}
+
+.water_icon
+{
+	width: 30px;
 }
 
 .redpoule_icon
@@ -377,8 +395,14 @@ body {
 	font-size: 18px;
 }
 
+/** chicken_zone **/
 
-
-
+.chicken_zone
+{
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	z-index: -10;
+}
 
 
