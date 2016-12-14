@@ -184,9 +184,17 @@ var chicken 								= {};
 chicken.elements						= {};
 chicken.elements.container	= document.querySelector('.chicken_character');
 
+var cackle = new Audio('./src/cackle_chicken.mp3');
+//var soundtrack = new Audio('./src/soundtrack.mp3');
+
+
+
 chicken.elements.container.addEventListener( 'click', function( event )
 {
 	event.preventDefault();
+	cackle.play();
+	cackle.currentTime = 0;
+	
 	
 	chicken.elements.container.classList.add( 'active' );
 	
@@ -195,6 +203,9 @@ chicken.elements.container.addEventListener( 'click', function( event )
 		chicken.elements.container.classList.remove( 'active' );
 	}, 100 );
 } );
+
+
+
 
 var food = 10;
 var sleeping = false;
