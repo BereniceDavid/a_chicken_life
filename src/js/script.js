@@ -21,7 +21,8 @@ boosts_content       = upgrades.querySelector('.boosts_content');
 
 for (i=0; i < list_container_content.length ; i++){
 
-list_container_content[i].addEventListener("click", function(){
+list_container_content[i].addEventListener("click", function(event){
+	event.preventDefault();
 	var value_list = this.getAttribute('value'); 
 	for (i=0; i < list_container_content.length ; i++){
 		list_container_content[i].style.backgroundColor = "#e67e22";
@@ -50,6 +51,122 @@ list_container_content[i].addEventListener("click", function(){
 });
 
 }
+
+
+/** canvas_noon_evening **/
+
+var state_time = document.querySelector('.pause_btn');
+	day_time   = document.querySelector('.day_time');
+
+state_time.addEventListener('click', function(event){
+	event.preventDefault();
+
+	if (day_state == 'night'){
+		day_state = 'day';
+	}
+	else {
+		day_state = 'night';
+	}
+
+});
+
+var canvas = document.querySelector("canvas");
+	context = canvas.getContext("2d");
+
+function resize() {
+    canvas.width = window.innerWidth -350;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+var i = 0;
+
+var sun = function(color, r) {
+    context.fillStyle = color;
+    
+    context.beginPath();
+    context.arc(0, 0, r, 0, 2 * Math.PI, true);
+    context.closePath();
+    
+    context.fill();
+}
+
+var moon = function(x, y, color, r){
+	context.fillStyle = color;
+    
+    context.beginPath();
+    context.arc(x, y, r, 0, 2 * Math.PI, true);
+    context.closePath();
+    
+    context.fill();
+}
+
+// context.translate(canvas.width/2, canvas.height/2);
+// context.rotate(360 * Math.PI / 180);
+// context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
+// sun('yellow', 50);
+
+context.beginPath();
+context.arc(canvas.width/2 + 420, canvas.height/2 - 300, 50, 0, 2 * Math.PI, true);    
+context.fillStyle="yellow";
+context.fill();
+context.closePath();
+
+var day_state = 'day'; // day | night
+
+function loop() {
+
+	
+    window.requestAnimationFrame(loop);
+    
+    // rotate + move along x
+    if (day_state == 'night'){
+
+	    if (i <=360) {
+	    	context.clearRect(0,0,canvas.width, canvas.height);
+	    	context.save();
+		    context.translate(canvas.width/2, canvas.height/2);
+	    	context.rotate(i * Math.PI / 180);
+	    	context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
+	    	if (i <= 100){
+	    		sun('yellow', 50);
+	    	}
+	    	else{
+	    		sun('black', 50);
+	    	}
+
+	    	context.restore();
+
+	    	i+=3;
+	    }
+    }
+    else {
+     	
+	    if (i >= 0) {
+	    	context.clearRect(0,0,canvas.width, canvas.height);
+	    	context.save();
+		    context.translate(canvas.width/2, canvas.height/2);
+	    	context.rotate(-i * Math.PI / 180);
+	    	context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
+	    	if (i >= 280){
+	    		sun('black', 50);
+	    	}
+	    	else{
+	    		sun('yellow', 50);
+	    	}
+
+	    	context.restore();
+
+	    	i-=3;
+	    }
+    }
+
+    
+};
+
+loop();
+
 
 // CHICKEN ANIMATION
 
