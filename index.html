@@ -10,50 +10,88 @@
 </head>
 
 <body>
+
 <div class="game_content">
-	<div class="home">
-		<div class="home_content">
-			<div class="home_background"></div>
-			<div class="chicken_home"></div>
-		</div>
-	</div>
-	<div class="chicken">
-		<div class="chicken_content">
-			<div class="chicken_stats">
-				<div class="chicken_stats_content">
-					<div class="eggs_count">
-						<div class="eggs_count_content">
-							<div class="eggs_count_txt">
-								<span class="number_eggs">100000</span><span class="eggs_unit">eggs/day</span>
-							</div>
+	<div class="stats">
+		<div class="stats_content">
+			<div class="chicken_picture"></div>
+			<div class="chicken_name">Roberta</div>
+			<div class="chicken_lvl">
+				<div class="chicken_lvl_content">
+					<div class="lvl_bar">
+						<div class="lvl_bar_content">
+							<div class="bar_current_count"></div>
 						</div>
-					</div>
-					<div class="chicken_lvl">
-						<!-- <div class="chicken_lvl_content"> -->
-							<div class="chicken_lvl_txt">
-								<span class="current_lvl">0</span><span class="next_lvl">1</span>
-								<div class="lvl_bar"></div>
-							</div>
-						<!-- </div>	 -->
-					</div>
+					</div><span class="current_lvl">Lvl 0</span>
 				</div>
 			</div>
-			<div class="chicken_name"></div>
-			<div class="chiken_character"></div>
-			<div class="chicken_starving_bar"></div>
-			<div class="chicken_thirsty_bar"></div>
+			<div class="chicken_starve_bar">
+				<div class="chicken_starve_bar_content">
+					<div class="bar_current_count" value="100"></div>
+				</div>
+			</div>
+			<div class="chicken_thirst_bar">
+				<div class="chicken_thirst_bar_content">
+					<div class="bar_current_count" value="100"></div>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="upgrade">
-		<div class="upgrade_content">
-			<div class="home_upgrade_content"></div>
-			<div class="food_upgrade_content"></div>
-			<div class="prod_upgrade_content"></div>
-			<div class="boost_upgrade_content"></div>
-			<div class="story_upgrade_content"></div>
+
+	<div class="chicken_zone">
+		
+	</div>
+
+	<div class="upgrades">
+		<div class="eggs">
+			<div class="eggs_content">
+				<span class="number_eggs">0</span><img src="src/images/gold.svg" class="gold">
+			</div>
+		</div>
+		<div class="tabs">
+			<div class="tabs_content">
+				<ul>
+					<li value="1">
+						<img src="src/images/consumables.svg" class="consumables">
+					</li>
+					<li value="2">
+						<img src="src/images/improvement.svg" class="improvement">
+					</li>
+					<li value="3">
+						<img src="src/images/coupe.svg" class="achievement">
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="list_upgrades">
+			<div class="improvements_content is-selected">
+				<ul>
+					<li><span class="logo_upgrade"><img src="src/images/seeds.svg" class="seeds_icon"></span><span class="name_upgrade">Seeds</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li>
+					<li><span class="logo_upgrade"><img src="src/images/water.svg" class="water_icon"></span><span class="name_upgrade">Water</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li>
+					<li><span class="logo_upgrade"><img src="src/images/pizza.svg" class="pizza_icon"></span><span class="name_upgrade">Pizza</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li>
+					<li><span class="logo_upgrade"><img src="src/images/redpoule.svg" class="redpoule_icon"></span><span class="name_upgrade">Red poule</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li>
+					<li><span class="logo_upgrade"><img src="src/images/noodle.svg" class="noodle_icon"></span><span class="name_upgrade">Chicken noodle</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li>
+				</ul>
+			</div>
+			<div class="consumables_content">
+				<ul>
+				<li><span class="logo_upgrade"></span><span class="name_upgrade">Masseur</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li>
+					<li><span class="logo_upgrade"></span><span class="name_upgrade">Masseur</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li><li><span class="logo_upgrade"></span><span class="name_upgrade">Masseur</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li>
+					<li><span class="logo_upgrade"></span><span class="name_upgrade">Masseur</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li>
+				</ul>
+			</div>
+			<div class="boosts_content">
+				<ul>
+					<li><span class="logo_upgrade"></span><span class="name_upgrade">Masseur</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li>
+					<li><span class="logo_upgrade"></span><span class="name_upgrade">Masseur</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li><li><span class="logo_upgrade"></span><span class="name_upgrade">Masseur</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li>
+					<li><span class="logo_upgrade"></span><span class="name_upgrade">Masseur</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li><li><span class="logo_upgrade"></span><span class="name_upgrade">Masseur</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li>
+					<li><span class="logo_upgrade"></span><span class="name_upgrade">Masseur</span><img src="src/images/gold.svg" class="gold_icon"><span class="price_upgrade">10000</span><span class="unit_lvl">Lv</span><span class="number_upgrade">0</span></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
+
 	<script src="src/js/script.js"></script>
 </body>
 
