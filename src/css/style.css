@@ -95,10 +95,13 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 80px;
+	width: 100%;
 	height: 10px;
 	border-radius: 80px;
 	background-color: cyan;
+	transform-origin: 0 0;
+	transform: scaleX(0);
+	will-change: transform;
 }
 
 .stats_content .chicken_starve_bar
@@ -122,10 +125,13 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 120px;
+	width: 100%;
 	height: 10px;
 	border-radius: 80px;
 	background-color: lightgreen;
+	transform: scaleX(1);
+	transform-origin: 0 0;
+	will-change:transform;
 }
 
 .stats_content .chicken_thirst_bar
@@ -149,10 +155,13 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 160px;
+	width: 180px;
 	height: 10px;
 	border-radius: 80px;
 	background-color: green;
+	transform-origin: 0 0;
+	transform: scaleX(1);
+	will-change:transform;
 }
 
 /** upgrades **/
