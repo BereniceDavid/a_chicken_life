@@ -59,8 +59,8 @@ body {
 	width: 90px;
 	height: 90px;
 	border-radius: 80px;
-	background-color: transparent;
-	border: 3px solid black;
+	background-color: #efeae5;
+	border: 3px solid #f4ede7;
 	position: relative;
 }
 
