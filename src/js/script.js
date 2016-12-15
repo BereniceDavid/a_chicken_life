@@ -79,27 +79,8 @@ var chicken 								= {};
 chicken.elements						= {};
 chicken.elements.container	= document.querySelector('.chicken_character');
 chicken.elements.picture	= document.querySelector('.chicken_picture');
-
-var cackle = new Audio('./src/music/cackle_chicken.mp3');
-
+	
 var day_state = 'day';
-
-chicken.elements.container.addEventListener( 'click', function( event )
-{
-	if (day_state == 'day') {
-		cackle.play();
-		cackle.currentTime = 0;
-	}
-	
-	event.preventDefault();
-	
-	chicken.elements.container.classList.add( 'active' );
-	
-	window.setTimeout( function()
-	{
-		chicken.elements.container.classList.remove( 'active' );
-	}, 100 );
-} );
 
 /** canvas_noon_evening **/
 
@@ -255,6 +236,10 @@ function loop() {
 
 loop();
 
+
+var cackle_source = ['./src/music/cackle_1.mp3', './src/music/cackle_2.mp3', './src/music/cackle_3.mp3', './src/music/cackle_4.mp3'];
+var cackle = new Audio('./src/music/cackle_1.mp3');
+
 /** btn_mute **/
 
 var muted = false;
@@ -264,6 +249,42 @@ var mute_btn   = document.querySelector('.mute_btn');
 	sound_wave = mute_btn.querySelectorAll('.sound_wave');
 	soundtrack = document.querySelector('audio.soundtrack');
 
+if (muted == false) {
+	cackle.volume = 1;
+	soundtrack.volume = 0.7;
+} else {
+	cackle.volume = 0;
+	soundtrack.volume = 0;
+}
+
+function chicken_cackle_random() {
+	var cackle_random = Math.floor(Math.random() * cackle_source.length);
+	cackle = new Audio(cackle_source[cackle_random]);
+}
+
+chicken.elements.container.addEventListener( 'click', function( event )
+{
+	if (day_state == 'day') {
+		chicken_cackle_random();
+		if (muted == false) {
+			cackle.volume = 1;
+		} else {
+			cackle.volume = 0;
+		}
+		cackle.play();
+		cackle.currentTime = 0;
+	} 
+	
+	event.preventDefault();
+	
+	chicken.elements.container.classList.add( 'active' );
+	
+	window.setTimeout( function()
+	{
+		chicken.elements.container.classList.remove( 'active' );
+	}, 100 );
+} );
+
 mute_btn.addEventListener('click', function(){
 
 	if (muted == true)
@@ -272,7 +293,7 @@ mute_btn.addEventListener('click', function(){
 			sound_wave[g].style.opacity = '1';
 		}
 		muted = false;
-		soundtrack.volume = 1;
+		soundtrack.volume = 0.7;
 		cackle.volume = 1;
 	}
 	else {
