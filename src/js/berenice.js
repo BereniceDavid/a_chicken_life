@@ -9,7 +9,7 @@ var upgrade = '';
 //fill var upgrade with the upgrade element we want to display
 function upgrade_html(src, name, cost, level) {
 	upgrade = document.createElement("li");
-	upgrade.innerHTML = '<span class="logo_upgrade"><img src="'+ src +'" class="seeds_icon"></span><span class="name_upgrade">'+ name +'</span><img src="src/img/interface/gold.svg" class="gold_icon"><span class="price_upgrade">'+ cost +'</span><span class="unit_lvl">Lv'+ level +'</span><span class="number_upgrade">0</span>';
+	upgrade.innerHTML = '<span class="logo_upgrade"><img src="'+ src +'" class="icon"></span><span class="name_upgrade">'+ name +'</span><img src="src/img/interface/gold.svg" class="gold_icon"><span class="price_upgrade">'+ cost +'</span><span class="unit_lvl">Lv'+ level +'</span><span class="number_upgrade">0</span>';
 }
 
 

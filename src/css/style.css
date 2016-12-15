@@ -347,7 +347,7 @@ body {
 	position: relative;
 }
 
-.seeds_icon, .redpoule_icon, .water_icon, .noodle_icon, .pizza_icon
+.icon
 {
 	position: absolute;
 	top: 50%;
@@ -593,15 +593,15 @@ body {
 
 /* chicken eyes */
 
-.chicken_character .st7,
-.chicken_character circle.st6 
+.chicken_character .normal_chicken .st7,
+.chicken_character .normal_chicken circle.st6 
 {
 	transition: transform 0.13s ease-in-out;
 	transform-origin: 50% 50%;
 }
 
-.chicken_character.active .st7,
-.chicken_character.active circle.st6 
+.chicken_character.active .normal_chicken .st7,
+.chicken_character.active .normal_chicken circle.st6 
 {
 	transform: scale(1.1);
 }
