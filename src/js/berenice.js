@@ -35,8 +35,10 @@ for(var k = 0; k < game.length; k++) {
 	//display habitats 
 	if (!game[k].habitat == "") {
 		for(var n = 0; n < game[k].habitat.length; n++) {
-			upgrade_html(game[k].habitat[n].source, game[k].habitat[n].name, game[k].habitat[n].cost, game[k].level, '');
-			fill_location_list[1].appendChild(upgrade);
+			if (game[k].habitat[n].name != "Cardboard") {
+				upgrade_html(game[k].habitat[n].source, game[k].habitat[n].name, game[k].habitat[n].cost, game[k].level, '');
+				fill_location_list[1].appendChild(upgrade);
+			}
 		}
 	}
 }
@@ -50,13 +52,14 @@ var mouse = { x: 0, y: 0 };
 
 document.addEventListener('mousemove', function(event) {
   mouse.y = event.clientY;
+	hover_description.style.top = mouse.y - 15 +'px';
 });
 	
 for(var p = 0; p < all_li_upgrade.length; p++) {
 	
 	all_li_upgrade[p].addEventListener('mouseover', function() {
 		
-		console.log(mouse.y);
+//		console.log(mouse.y);
 		
 		this_li_name = this.querySelector('.name_upgrade').innerHTML;
 		
@@ -65,24 +68,24 @@ for(var p = 0; p < all_li_upgrade.length; p++) {
 			//check food drink upgrades
 			for(var browse_in_consumable = 0; browse_in_consumable < game[browse_json].consumable_upgrades.length; browse_in_consumable++) {
 				if( game[browse_json].consumable_upgrades[browse_in_consumable].name == this_li_name ) {
+					hover_description.innerHTML = game[browse_json].consumable_upgrades[browse_in_consumable].description
 					hover_description.style.display = 'block';
-					hover_description.style.top = mouse.y + 'px';
 				}
 			}
 			
 			//check habitat upgrades
 			for(var browse_in_habitat_upgrades = 0; browse_in_habitat_upgrades < game[browse_json].habitat_upgrades.length;browse_in_habitat_upgrades++) {
 				if( game[browse_json].habitat_upgrades[browse_in_habitat_upgrades].name == this_li_name ) {
+					hover_description.innerHTML = game[browse_json].habitat_upgrades[browse_in_habitat_upgrades].description
 					hover_description.style.display = 'block';
-					hover_description.style.top = mouse.y +'px';
 				}
 			}
 			
 			//check habitats
 			for(var browse_habitat = 0; browse_habitat < game[browse_json].habitat.length; browse_habitat++) {
 				if( game[browse_json].habitat[browse_habitat].name == this_li_name ) {
+					hover_description.innerHTML = game[browse_json].habitat[browse_habitat].description
 					hover_description.style.display = 'block';
-					hover_description.style.top = mouse.y +'px';
 				}
 			}
 		}

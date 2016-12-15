@@ -1,14 +1,24 @@
 .hover_description {
-	color: #fff;
+	color: #ffd633;
 	z-index: 400;
 	position: absolute;
 	right: 349px;
-	width: auto;
-	padding: 6px;
+
+	padding: 2px 16px 15px 16px;
 	background-color: #f28d4f;
 	border: solid #d35400;
 	border-width: 4px 0 4px 4px;
 	border-radius: 1px 0 0 1px;
 	
 	display: none;
+	font-size: 16px;
+}
+
+.hover_description .effect {
+	color: #fefefe;
+	font-size: 17px;
+}
+
+.hover_description .bigger {
+	font-size: 26px;
 }
