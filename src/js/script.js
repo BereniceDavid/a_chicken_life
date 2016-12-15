@@ -76,10 +76,16 @@ var chicken 								= {};
 chicken.elements						= {};
 chicken.elements.container	= document.querySelector('.chicken_character');
 
-var cackle = new Audio('./src/cackle_chicken.mp3');
-//var soundtrack = new Audio('./src/soundtrack.mp3');
+var cackle = new Audio('./src/music/cackle_chicken.mp3');
+
+
 chicken.elements.container.addEventListener( 'click', function( event )
 {
+	if (day_state == 'day') {
+		cackle.play();
+		cackle.currentTime = 0;
+	}
+	
 	event.preventDefault();
 	
 	chicken.elements.container.classList.add( 'active' );
@@ -92,8 +98,11 @@ chicken.elements.container.addEventListener( 'click', function( event )
 
 /** canvas_noon_evening **/
 
-var state_time = document.querySelector('.pause_btn');
-	day_time   = document.querySelector('.day_time');
+var state_time = document.querySelector('.pause_btn'),
+		day_time = document.querySelector('.day_time');
+
+var day_state = 'day'; // day | night
+var soundtrack = document.querySelector('audio.soundtrack');
 
 state_time.addEventListener('click', function(event){
 	event.preventDefault();
@@ -102,15 +111,26 @@ state_time.addEventListener('click', function(event){
 		day_state = 'day';
 		document.querySelector('.black_screen_bot').style.opacity = "0";
 		document.querySelector('.black_screen_top').style.opacity = "0";
-		chicken.elements.container.classList.remove('sleeping');
-	}
-	else {
+		
+		//display normal chicken
+		if ( chicken.elements.container.classList.contains('sleeping') )
+			chicken.elements.container.classList.remove('sleeping');
+		
+		//launch day soundtrack
+		soundtrack.setAttribute('src','src/music/day_soundtrack.mp3');
+	
+	} else {
 		day_state = 'night';
 		document.querySelector('.black_screen_bot').style.opacity = "0.5";
 		document.querySelector('.black_screen_top').style.opacity = "0.5";
-		chicken.elements.container.classList.add('sleeping');
+		
+		//display sleeping chicken
+		if ( !chicken.elements.container.classList.contains('sleeping') )
+			chicken.elements.container.classList.add('sleeping');
+		
+		//launch night soundtrack
+		soundtrack.setAttribute('src','src/music/night_soundtrack.mp3');
 	}
-
 });
 
 var canvas = document.querySelector("canvas");
@@ -119,36 +139,32 @@ var canvas = document.querySelector("canvas");
 function resize() {
 
 	if (window.matchMedia("(max-width: 39.9375em)").matches) {
- 		canvas.width = window.innerWidth;
-    	canvas.height = window.innerHeight;
+		canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 	} else {
-	    canvas.width = window.innerWidth -350;
-    	canvas.height = window.innerHeight;
+	  canvas.width = window.innerWidth -350;
+  	canvas.height = window.innerHeight;
 	}
 }
 window.addEventListener('resize', resize);
 resize();
 
-var i = 0;
+var j = 0;
 
 var sun = function(color, r) {
-    context.fillStyle = color;
-    
-    context.beginPath();
-    context.arc(0, 0, r, 0, 2 * Math.PI, true);
-    context.closePath();
-    
-    context.fill();
+  context.fillStyle = color;
+  context.beginPath();
+  context.arc(0, 0, r, 0, 2 * Math.PI, true);
+  context.closePath();
+  context.fill();
 }
 
 var moon = function(x, y, color, r){
 	context.fillStyle = color;
-    
-    context.beginPath();
-    context.arc(x, y, r, 0, 2 * Math.PI, true);
-    context.closePath();
-    
-    context.fill();
+  context.beginPath();
+  context.arc(x, y, r, 0, 2 * Math.PI, true);
+  context.closePath();
+  context.fill();
 }
 
 // context.translate(canvas.width/2, canvas.height/2);
@@ -162,56 +178,49 @@ context.fillStyle="yellow";
 context.fill();
 context.closePath();
 
-var day_state = 'day'; // day | night
-
 function loop() {
-
 	
-    window.requestAnimationFrame(loop);
-    
-    // rotate + move along x
-    if (day_state == 'night'){
-
-	    if (i <=360) {
-	    	context.clearRect(0,0,canvas.width, canvas.height);
-	    	context.save();
-		    context.translate(canvas.width/2, canvas.height/2);
-	    	context.rotate(i * Math.PI / 180);
-	    	context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
-	    	if (i <= 100){
-	    		sun('yellow', 50);
-	    	}
-	    	else{
-	    		sun('white', 50);
-	    	}
-
-	    	context.restore();
-
-	    	i+=3;
+	window.requestAnimationFrame(loop);
+  
+	// rotate + move along x
+  if (day_state == 'night'){
+		if (j <=360) {
+	    context.clearRect(0,0,canvas.width, canvas.height);
+	    context.save();
+		  context.translate(canvas.width/2, canvas.height/2);
+	    context.rotate(j * Math.PI / 180);
+	    context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
+	    
+			if (j <= 100){
+	    	sun('yellow', 50);
 	    }
-    }
-    else {
-     	
-	    if (i >= 0) {
-	    	context.clearRect(0,0,canvas.width, canvas.height);
-	    	context.save();
-		    context.translate(canvas.width/2, canvas.height/2);
-	    	context.rotate(-i * Math.PI / 180);
-	    	context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
-	    	if (i >= 280){
-	    		sun('white', 50);
-	    	}
-	    	else{
-	    		sun('yellow', 50);
-	    	}
-
-	    	context.restore();
-
-	    	i-=3;
+	    else{
+	    	sun('white', 50);
 	    }
-    }
 
-    
+	    context.restore();
+
+	    j+=3;
+	  }
+  }
+  else {
+    if (j >= 0) {
+	  	context.clearRect(0,0,canvas.width, canvas.height);
+	    context.save();
+		  context.translate(canvas.width/2, canvas.height/2);
+	    context.rotate(-j * Math.PI / 180);
+	    context.translate(canvas.width/2 - 100, 0 - canvas.height/2 + 100);
+	    if (j >= 280){
+	    	sun('white', 50);
+	    }
+	    else{
+	    	sun('yellow', 50);
+	    }
+			context.restore();
+
+	    j-=3;
+	  }
+  }
 };
 
 loop();
@@ -243,7 +252,7 @@ loop();
 // 		if ( chicken.elements.container.classList.contains('dead') )
 // 			chicken.elements.container.classList.remove('dead');
 // 	}
->>>>>>> master
+
 	
 // 	if (has_bought_element == true)
 // 	{
