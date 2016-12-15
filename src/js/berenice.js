@@ -10,7 +10,7 @@ var upgrade = '';
 function upgrade_html(src, name, cost, level, nbr_upgrade) {
 	upgrade = document.createElement("li");
 	
-	upgrade.innerHTML = '<span class="logo_upgrade"><img src="'+ src +'" class="icon"></span><span class="name_upgrade">'+ name +'</span><img src="src/img/interface/gold.svg" class="gold_icon"><span class="price_upgrade">'+ cost +'</span><span class="unit_lvl">Lv'+ level +'</span><span class="number_upgrade">'+ nbr_upgrade +'</span>';
+	upgrade.innerHTML = '<span class="logo_upgrade"><img src="'+ src +'" class="icon"></span><span class="name_upgrade">'+ name +'</span><img src="src/img/interface/gold.svg" class="gold_icon"><span class="price_upgrade">'+ cost +'</span><span class="unit_lvl">Lv <span class="level_required">'+ level +'</span></span><span class="number_upgrade">'+ nbr_upgrade +'</span>';
 }
 
 for(var k = 0; k < game.length; k++) {

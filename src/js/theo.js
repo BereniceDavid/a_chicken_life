@@ -87,7 +87,7 @@ function init(){
   if(localStorage.upgrade_2_delay == undefined)
     localStorage.upgrade_2_delay = 2000;
   if(localStorage.clickcount == undefined)
-    localStorage.clickcount = 600;
+    localStorage.clickcount = 6000;
 
   /**XP**/
   if(localStorage.level == undefined || localStorage.level == 0){
@@ -106,7 +106,7 @@ function init(){
   else{
     clicker.el.container.gamer_interface.xp_bar.style.transform = 'scaleX(' + Number(localStorage.actual_xp)/clicker.el.container.gamer_interface.xp_bar.getAttribute('value') + ')';
   }
-  
+
   xp_actualisation();
 
   /**Hunger**/
@@ -409,7 +409,7 @@ for(var n = 0; n < clicker.el.container.improvements_content.li.length; n++){
 function classic_augmentation(m){
   if(day_state == 'day'){
     var cost = Number(clicker.el.container.improvements_content.li[m].querySelector('.price_upgrade').innerHTML);
-    var level_required = Number(clicker.el.container.improvements_content.li[m].querySelector('.unit_lvl').innerHTML.charAt(2));
+    var level_required = Number(clicker.el.container.improvements_content.li[m].querySelector('.level_required').innerHTML);
     console.log(level_required)
     if(Number(localStorage.clickcount) >= cost && Number(localStorage.level) >= level_required){
       localStorage.clickcount = Number(localStorage.clickcount) - cost;
@@ -452,13 +452,13 @@ for(var t = 0; t < clicker.el.container.boost_content.li.length; t++){
 function boost_augmentation(m){
   if(day_state == 'day'){
     var cost = Number(clicker.el.container.boost_content.li[m].querySelector('.price_upgrade').innerHTML);
-    var level_required = Number(clicker.el.container.boost_content.li[m].querySelector('.unit_lvl').innerHTML.charAt(2));
+    var level_required = Number(clicker.el.container.boost_content.li[m].querySelector('.level_required').innerHTML);
     console.log(level_required)
     if(Number(localStorage.clickcount) >= cost && Number(localStorage.level) >= level_required){
       localStorage.clickcount = Number(localStorage.clickcount) - cost;
       clicker.el.container.score.innerHTML = localStorage.clickcount;
       if(m == 1)
-        gold_egg();
+        gold_egg(cost, m, level_required);
     }
   }
 }
@@ -469,6 +469,15 @@ Gold Egg
 
 *****************/
 
-function gold_egg(){
+function gold_egg(cost, m, level_required){
   localStorage.upgrade_3 = Number(localStorage.upgrade_3) + 1;
+  clicker.el.container.boost_content.li[m].querySelector('.price_upgrade').innerHTML = cost * 4;
+  clicker.el.container.boost_content.li[m].querySelector('.level_required').innerHTML = (level_required + 2);
+  console.log(Number(clicker.el.container.boost_content.li[m].querySelector('.unit_lvl').innerHTML.charAt(2)))
+  if(Number(localStorage.upgrade_3) == 1){
+    clicker.el.container.boost_content.li[m].querySelector('img').setAttribute('src', 'src/img/upgrade/diamond-egg.svg');
+  }
+  else if(Number(localStorage.upgrade_3) == 2){
+    clicker.el.container.boost_content.li[m].querySelector('img').setAttribute('src', 'src/img/upgrade/platine-egg.svg');
+  }
 }

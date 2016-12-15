@@ -118,13 +118,29 @@ var game = [
 	},
 	{
 		"level":9,
-		"habitat_upgrades":"",
+		"habitat_upgrades":[
+			{
+				"name":"Daily Lay",
+				"source":"src/img/upgrade/panier_oeuf.svg",
+				"cost":400,
+				"description":"",
+				"bought":false
+			}
+		],
 		"consumable_upgrades":"",
 		"habitat": ""
 	},
 	{
 		"level":10,
-		"habitat_upgrades":"",
+		"habitat_upgrades":[
+			{
+				"name":"Automatic Dispenser",
+				"source":"src/img/upgrade/Distributeur_niveau_1.svg",
+				"cost":600,
+				"description":"",
+				"bought":false
+			}
+		],
 		"consumable_upgrades":"",
 		"habitat":[
 			{
