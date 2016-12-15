@@ -257,8 +257,6 @@ if (muted == false) {
 	soundtrack.volume = 0;
 }
 
-
-
 function chicken_cackle_random() {
 	var cackle_random = Math.floor(Math.random() * cackle_source.length);
 	cackle = new Audio(cackle_source[cackle_random]);
