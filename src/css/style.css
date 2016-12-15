@@ -104,8 +104,8 @@ body {
 	transform-origin: 0 0;
 	transform: scaleX(0);
 	will-change: transform;
-  will-change: background-color;
-  transition: all 0.3s;
+    will-change: background-color;
+    transition: all 0.3s;
 }
 
 .stats_content .chicken_starve_bar
@@ -149,16 +149,17 @@ body {
 	height: 10px;
 	border-radius: 80px;
 	background-color: grey;
-  will-change: background-color;
-  transition: all 0.3s;
+    will-change: background-color;
+    transition: all 0.3s;
 }
 
 .stats_content .chicken_thirst_bar .chicken_thirst_bar_content
 {
 	position: relative;
-  transform: scaleX(1);
+    transform: scaleX(1);
 	transform-origin: 0 0;
 	will-change:transform;
+    transition: all 0.3s;
 }
 
 .chicken_thirst_bar_content .bar_current_count
@@ -412,6 +413,58 @@ body {
 	transform: translateY(-80%);
 	color: #fefefe;
 	font-size: 18px;
+}
+
+/**** Beginning ****/
+
+.pop-up-beginning
+{
+    position: absolute;
+    top: 15%;
+    left: 12%;
+    background-color: #e67e22;
+    width: 70%;
+    height: 70%;
+    z-index: 1000;
+    text-align: center;
+    border: 5px solid #d35400;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pop-up-beginning h1
+{
+    font-size: 50px;
+    color: #f1c40f;
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+
+.pop-up-beginning p
+{
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.pop-up-beginning .button-beginning
+{
+    font-size: 30px;
+    background-color: #f28d4f;
+    width: 70px;
+    height: 50px;
+    line-height: 40px; 
+    margin: 0px auto 50px auto;
+    border: 2px solid #f28d4f;
+    border-radius: 10px;
+    transition: all 0.3s;
+    cursor: pointer
+}
+
+.pop-up-beginning .button-beginning:hover
+{
+    border: 2px solid #d35400;
 }
 
 /** chicken_zone **/
