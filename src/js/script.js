@@ -115,6 +115,10 @@ state_time.addEventListener('click', function(event){
 		day_state = 'day';
 		document.querySelector('.black_screen_bot').style.opacity = "0";
 		document.querySelector('.black_screen_top').style.opacity = "0";
+		for (var u = 0; u < bar_play.length; u++){
+			bar_play[u].style.opacity = "1";
+		}
+		bar_pause.style.opacity = "0";
 		
 		//display normal chicken
 		if ( chicken.elements.container.classList.contains('sleeping') )
@@ -130,7 +134,11 @@ state_time.addEventListener('click', function(event){
 		day_state = 'night';
 		document.querySelector('.black_screen_bot').style.opacity = "0.5";
 		document.querySelector('.black_screen_top').style.opacity = "0.5";
-		
+		console.log(bar_play);
+		for (var u = 0; u < bar_play.length; u++){
+			bar_play[u].style.opacity = "0";
+		}
+		bar_pause.style.opacity = "1";
 		//display sleeping chicken
 		if ( !chicken.elements.container.classList.contains('sleeping') )
 			chicken.elements.container.classList.add('sleeping');
