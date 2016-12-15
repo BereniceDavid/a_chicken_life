@@ -8,6 +8,7 @@ var game = [
 				"name":"Cardboard",
 				"source":"src/img/habitat/cardboard.svg",
 				"cost":0,
+				"description":"",
 				"bought":true
 			}
 		]
@@ -19,6 +20,7 @@ var game = [
 				"name":"Light",
 				"source":"src/img/upgrade/cardboard_light.svg",
 				"cost":30,
+				"description":"",
 				"bought":false
 			}
 		],
@@ -33,12 +35,14 @@ var game = [
 				"name":"Seeds",
 				"source":"src/img/upgrade/seeds.svg",
 				"cost":5,
+				"description":"",
 				"bought":false
 			},
 			{
 				"name":"Water",
 				"source":"src/img/upgrade/water.svg",
 				"cost":5,
+				"description":"",
 				"bought":false
 			}
 		],
@@ -64,6 +68,7 @@ var game = [
 				"name":"Pizza",
 				"source":"src/img/upgrade/pizza.svg",
 				"cost":15,
+				"description":"",
 				"bought":false
 			}
 		],
@@ -72,6 +77,7 @@ var game = [
 				"name":"Cage",
 				"source":"src/img/habitat/cage.svg",
 				"cost":300,
+				"description":"",
 				"bought":false
 			}
 		]
@@ -84,6 +90,7 @@ var game = [
 				"name":"Eggnog",
 				"source":"src/img/upgrade/eggnog.svg",
 				"cost":40,
+				"description":"",
 				"bought":false
 			}
 		],
@@ -97,6 +104,7 @@ var game = [
 				"name":"Noodles",
 				"source":"src/img/upgrade/noodle.svg",
 				"cost":70,
+				"description":"",
 				"bought":false
 			}
 		],
@@ -109,6 +117,7 @@ var game = [
 				"name":"Golden egg",
 				"source":"src/img/upgrade/golden_egg.svg",
 				"cost":200,
+				"description":"",
 				"bought":false
 			}
 		],
@@ -130,6 +139,7 @@ var game = [
 				"name":"Open air plot",
 				"source":"src/img/habitat/cage.svg",
 				"cost":1000,
+				"description":"",
 				"bought":false
 			}
 		]
