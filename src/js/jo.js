@@ -23,7 +23,7 @@ function click_incrementation(){
 
   pos_mouse = document.querySelector('.spawn');
 
-  pos_mouse.style.left = mouse_money.x - 35 + 'px';
+  pos_mouse.style.left = mouse_money.x - 15 + 'px';
   pos_mouse.style.top = mouse_money.y - 20 + 'px';
   window.setTimeout(function(){
     
@@ -38,14 +38,14 @@ function click_incrementation(){
 // localStorage.level;
 // console.log(localStorage.level);
 
-//console.log(Number(localStorage.clickcount));
+console.log(Number(localStorage.clickcount));
+
 var home_content = document.querySelector('.consumables_content'),
     home_buy     = home_content.querySelectorAll('ul li'),
     home_change  = document.querySelector('.container_habitat img');
 
 for (q = 0; q < home_buy.length; q++){
   home_buy[q].addEventListener('click', function(){
-    
     var cost_home  = this.querySelector('.price_upgrade').innerHTML,
         lvl_home   = this.querySelector('.unit_lvl .level_required').innerHTML,
         logo_home  = this.querySelector('.logo_upgrade img').getAttribute('src');
@@ -55,7 +55,6 @@ for (q = 0; q < home_buy.length; q++){
             localStorage.clickcount = Number(localStorage.clickcount) - cost_home;
             clicker.el.container.score.innerHTML = localStorage.clickcount;
             this.style.display = 'none';
-            localStorage.incrementation = Number(localStorage.incrementation) + 1;
         }
   });
   
