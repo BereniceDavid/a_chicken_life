@@ -40,14 +40,14 @@ function click_incrementation(){
 
 console.log(Number(localStorage.clickcount));
 
-var home_content = document.querySelector('.consumables_content');
-    home_buy     = home_content.querySelectorAll('ul li');
+var home_content = document.querySelector('.consumables_content'),
+    home_buy     = home_content.querySelectorAll('ul li'),
     home_change  = document.querySelector('.container_habitat img');
 
 for (q = 0; q < home_buy.length; q++){
   home_buy[q].addEventListener('click', function(){
-    var cost_home  = this.querySelector('.price_upgrade').innerHTML;
-        lvl_home   = this.querySelector('.unit_lvl .level_required').innerHTML;
+    var cost_home  = this.querySelector('.price_upgrade').innerHTML,
+        lvl_home   = this.querySelector('.unit_lvl .level_required').innerHTML,
         logo_home  = this.querySelector('.logo_upgrade img').getAttribute('src');
 
         if (Number(localStorage.level) >= lvl_home){
@@ -59,9 +59,3 @@ for (q = 0; q < home_buy.length; q++){
   });
   
 }
-
-
-
-
-
-
