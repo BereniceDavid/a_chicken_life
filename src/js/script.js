@@ -98,11 +98,11 @@ chicken.elements.container.addEventListener( 'click', function( event )
 
 /** canvas_noon_evening **/
 
-var state_time = document.querySelector('.pause_btn'),
-		day_time = document.querySelector('.day_time');
-
-var day_state = 'day'; // day | night
-var soundtrack = document.querySelector('audio.soundtrack');
+var state_time = document.querySelector('.pause_btn');
+	day_time   = document.querySelector('.day_time');
+	bar_pause = state_time.querySelector('polygon');
+	bar_play  = state_time.querySelectorAll('path');
+	console.log(bar_play);
 
 state_time.addEventListener('click', function(event){
 	event.preventDefault();
@@ -139,11 +139,11 @@ var canvas = document.querySelector("canvas");
 function resize() {
 
 	if (window.matchMedia("(max-width: 39.9375em)").matches) {
-		canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+ 		canvas.width = window.innerWidth;
+    	canvas.height = window.innerHeight;
 	} else {
-	  canvas.width = window.innerWidth -350;
-  	canvas.height = window.innerHeight;
+	    canvas.width = window.innerWidth -350;
+    	canvas.height = window.innerHeight;
 	}
 }
 window.addEventListener('resize', resize);
@@ -225,7 +225,32 @@ function loop() {
 
 loop();
 
+/** btn_mute **/
 
+var muted = false;
+console.log(muted);
+
+var mute_btn   = document.querySelector('.mute_btn');
+	speaker    = mute_btn.querySelectorAll('.speaker');
+	sound_wave = mute_btn.querySelectorAll('.sound_wave');
+
+mute_btn.addEventListener('click', function(){
+
+	if (muted == true)
+	{
+		for (g = 0; g < sound_wave.length ; g++){
+			sound_wave[g].style.opacity = '1';
+		}
+		muted = false;
+	}
+	else {
+		for (g = 0; g < sound_wave.length ; g++){
+			sound_wave[g].style.opacity = '0';
+		}	
+		muted = true;
+	}
+
+});
 
 // var food = 10;
 // var has_bought_element = false;
