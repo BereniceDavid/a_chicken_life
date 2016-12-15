@@ -21,18 +21,47 @@ function click_incrementation(){
 
   zone_spawn_pos.appendChild(spawn);
 
-  test = document.querySelector('.spawn');
+  pos_mouse = document.querySelector('.spawn');
 
-  test.style.left = mouse_money.x - 15 + 'px';
-  test.style.top = mouse_money.y - 20 + 'px';
-
-  console.log('oko' + test.style.top, test.style.left );
-
-
+  pos_mouse.style.left = mouse_money.x - 15 + 'px';
+  pos_mouse.style.top = mouse_money.y - 20 + 'px';
   window.setTimeout(function(){
     
     spawn.remove();
     
-     }, 100);
+     }, 50);
 
 }
+
+/** buy_habitats **/
+
+// localStorage.level;
+// console.log(localStorage.level);
+
+console.log(Number(localStorage.clickcount));
+
+var home_content = document.querySelector('.consumables_content');
+    home_buy     = home_content.querySelectorAll('ul li');
+    home_change  = document.querySelector('.container_habitat img');
+
+for (q = 0; q < home_buy.length; q++){
+  home_buy[q].addEventListener('click', function(){
+    var cost_home  = this.querySelector('.price_upgrade').innerHTML;
+        lvl_home   = this.querySelector('.unit_lvl .level_required').innerHTML;
+        logo_home  = this.querySelector('.logo_upgrade img').getAttribute('src');
+
+        if (Number(localStorage.level) >= lvl_home){
+            home_change.setAttribute('src', logo_home);
+            localStorage.clickcount = Number(localStorage.clickcount) - cost_home;
+            clicker.el.container.score.innerHTML = localStorage.clickcount;
+            this.style.display = 'none';
+        }
+  });
+  
+}
+
+
+
+
+
+
