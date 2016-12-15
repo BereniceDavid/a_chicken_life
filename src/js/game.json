@@ -24,17 +24,17 @@ var game = [
 		"habitat_upgrades":"",
 		"consumable_upgrades":[
 			{
-				"name":"Water",
-				"source":"src/img/upgrade/water.svg",
-				"cost":5,
-				"description":"<span class='effect'><span class='bigger'>+</span>15 drink</span></br><span>Give her something to drink you monster!</span>",
-				"bought":false
-			},
-			{
 				"name":"Seeds",
 				"source":"src/img/upgrade/seeds.svg",
 				"cost":5,
 				"description":"<span class='effect'><span class='bigger'>+</span>30 food</span></br><span>A handful of seed to feed your poor little creature</span>",
+				"bought":false
+			},
+			{
+				"name":"Water",
+				"source":"src/img/upgrade/water.svg",
+				"cost":5,
+				"description":"<span class='effect'><span class='bigger'>+</span>15 drink</span></br><span>Give her something to drink you monster!</span>",
 				"bought":false
 			}
 		],
@@ -110,8 +110,7 @@ var game = [
 				"source":"src/img/upgrade/golden_egg.svg",
 				"cost":200,
 				"description":"<span class='effect'>Give one in ten chance to lay a golden egg,</br>two times more expansive than a normal egg</span></br><span>It's Shiiiiny ⊙‿⊙</span>",
-				"bought":false,
-				"incrementation":1
+				"bought":false
 			}
 		],
 		"consumable_upgrades":"",
@@ -149,8 +148,7 @@ var game = [
 				"source":"src/img/habitat/cage.svg",
 				"cost":1000,
 				"description":"<span class='effect'>Unlock lvl 10</span></br><span>Freeeeeedom</span>",
-				"bought":false,
-				"incrementation":1
+				"bought":false
 			}
 		]
 	}
