@@ -272,7 +272,7 @@ function reverse_chicken_hunger_animation(){
   if(Number(localStorage.actual_hunger) >= Number(localStorage.max_hunger)/2){
     if(Number(localStorage.actual_thirst) >= Number(localStorage.max_thirst)/2)
       chicken.elements.container.classList.remove('sad');
-    clicker.el.container.gamer_interface.hunger_bar.style.backgroundColor = "lightgreen";
+    clicker.el.container.gamer_interface.hunger_bar.style.backgroundColor = "#F47F5F";
   }
 }
 
@@ -339,7 +339,7 @@ function reverse_thirst_chicken_animation(){
     ){
     if(Number(localStorage.actual_hunger) >= Number(localStorage.max_hunger)/2)
       chicken.elements.container.classList.remove('sad');
-    clicker.el.container.gamer_interface.actual_thirst.style.backgroundColor = "green";
+    clicker.el.container.gamer_interface.actual_thirst.style.backgroundColor = "cyan";
   }
 }
 
