@@ -23,7 +23,7 @@ function click_incrementation(){
 
   pos_mouse = document.querySelector('.spawn');
 
-  pos_mouse.style.left = mouse_money.x - 15 + 'px';
+  pos_mouse.style.left = mouse_money.x - 35 + 'px';
   pos_mouse.style.top = mouse_money.y - 20 + 'px';
   window.setTimeout(function(){
     
@@ -38,7 +38,7 @@ function click_incrementation(){
 // localStorage.level;
 // console.log(localStorage.level);
 
-console.log(Number(localStorage.clickcount));
+//console.log(Number(localStorage.clickcount));
 
 var home_content = document.querySelector('.consumables_content'),
     home_buy     = home_content.querySelectorAll('ul li'),
@@ -55,6 +55,7 @@ for (q = 0; q < home_buy.length; q++){
             localStorage.clickcount = Number(localStorage.clickcount) - cost_home;
             clicker.el.container.score.innerHTML = localStorage.clickcount;
             this.style.display = 'none';
+            localStorage.incrementation = Number(localStorage.incrementation) + 1;
         }
   });
   
