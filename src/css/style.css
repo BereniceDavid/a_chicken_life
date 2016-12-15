@@ -438,10 +438,24 @@ body {
 .pause_btn
 {
 	position: absolute;
-	bottom: 20px;
-	right: calc(20px + 350px);
-	color: black;
+	top: 20px;
+	right: calc(70px + 350px);
 	z-index: 100;
+	width: 15px;
+}
+
+.pause_btn polygon
+{
+	opacity: 0;
+}
+
+.mute_btn 
+{
+		position: absolute;
+		right: calc(20px + 350px);
+		top: 20px;
+		width: 30px;
+		z-index: 100;
 }
 
 .menu_btn
@@ -453,6 +467,11 @@ body {
 	color: #fefefe;
 	font-size: 23px;
 	z-index: 800;
+}
+
+.mute_btn:hover, .menu_btn:hover, .pause_btn:hover, .play_btn:hover
+{
+	cursor: pointer;
 }
 
 /** landscape **/
