@@ -274,6 +274,8 @@ function chicken_hunger_animation(){
   if(Number(localStorage.actual_hunger) <= Number(localStorage.max_hunger)/2){
     if ( !chicken.elements.container.classList.contains('sad') )
       chicken.elements.container.classList.add('sad');
+		if ( !chicken.elements.picture.classList.contains('sad') )
+      chicken.elements.picture.classList.add('sad');
     clicker.el.container.gamer_interface.hunger_bar.style.backgroundColor = "#f2c637"
   }
   if(Number(localStorage.actual_hunger) <= Number(localStorage.max_hunger)/4){
@@ -285,6 +287,10 @@ function chicken_hunger_animation(){
       chicken.elements.container.classList.remove('sad');
     if ( !chicken.elements.container.classList.contains('dead') )
       chicken.elements.container.classList.add('dead');
+		if ( chicken.elements.picture.classList.contains('sad') )
+      chicken.elements.picture.classList.remove('sad');
+    if ( !chicken.elements.picture.classList.contains('dead') )
+      chicken.elements.picture.classList.add('dead');
 
     setTimeout(function(){localStorage.clear();window.location.reload();}, 2000);
   }
@@ -295,8 +301,10 @@ function reverse_chicken_hunger_animation(){
     clicker.el.container.gamer_interface.hunger_bar.style.backgroundColor = "#f2c637";
   }
   if(Number(localStorage.actual_hunger) >= Number(localStorage.max_hunger)/2){
-    if(Number(localStorage.actual_thirst) >= Number(localStorage.max_thirst)/2)
-      chicken.elements.container.classList.remove('sad');
+    if(Number(localStorage.actual_thirst) >= Number(localStorage.max_thirst)/2) {
+			chicken.elements.container.classList.remove('sad');
+			chicken.elements.picture.classList.remove('sad');
+		}
     clicker.el.container.gamer_interface.hunger_bar.style.backgroundColor = "#F47F5F";
   }
 }
@@ -347,6 +355,8 @@ function chicken_thirst_animation(){
   if(Number(localStorage.actual_thirst) <= Number(localStorage.max_thirst)/2){
     if ( !chicken.elements.container.classList.contains('sad') )
       chicken.elements.container.classList.add('sad');
+		if ( !chicken.elements.picture.classList.contains('sad') )
+      chicken.elements.picture.classList.add('sad');
     clicker.el.container.gamer_interface.actual_thirst.style.backgroundColor = "#ffc300"
   }
   if(Number(localStorage.actual_thirst) <= Number(localStorage.max_thirst)/4){
@@ -358,6 +368,10 @@ function chicken_thirst_animation(){
       chicken.elements.container.classList.remove('sad');
     if ( !chicken.elements.container.classList.contains('dead') )
       chicken.elements.container.classList.add('dead');
+		if ( chicken.elements.picture.classList.contains('sad') )
+      chicken.elements.picture.classList.remove('sad');
+    if ( !chicken.elements.picture.classList.contains('dead') )
+      chicken.elements.picture.classList.add('dead');
 
     setTimeout(function(){localStorage.clear();window.location.reload();}, 2000);
   }
@@ -369,8 +383,10 @@ function reverse_thirst_chicken_animation(){
   }
   if(Number(localStorage.actual_thirst) >= Number(localStorage.max_thirst)/2
     ){
-    if(Number(localStorage.actual_hunger) >= Number(localStorage.max_hunger)/2)
-      chicken.elements.container.classList.remove('sad');
+    if(Number(localStorage.actual_hunger) >= Number(localStorage.max_hunger)/2) {
+			chicken.elements.container.classList.remove('sad');
+			chicken.elements.picture.classList.remove('sad');
+		}
     clicker.el.container.gamer_interface.actual_thirst.style.backgroundColor = "cyan";
   }
 }
@@ -378,7 +394,7 @@ function reverse_thirst_chicken_animation(){
 function thirst_augmentation(augmentation){
   localStorage.actual_thirst = Number(localStorage.actual_thirst) + augmentation;
   if(Number(localStorage.actual_thirst) > Number(localStorage.max_thirst)){
-    console.log('sa devrai pas rentrer');
+//    console.log('sa devrai pas rentrer');
     localStorage.actual_thirst = localStorage.max_thirst;
   } clicker.el.container.gamer_interface.thirst_bar.style.transform = 'scaleX(' + Number(localStorage.actual_thirst)/Number(localStorage.max_thirst) + ')';
   reverse_thirst_chicken_animation();
