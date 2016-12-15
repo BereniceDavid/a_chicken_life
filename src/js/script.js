@@ -53,17 +53,20 @@ list_container_content[i].addEventListener("click", function(event){
 }
 
 var menu_state;
+	menu_btn = document.querySelector('.menu_btn');
 
-document.querySelector('.menu_btn').addEventListener('click', function(event){
+menu_btn.addEventListener('click', function(event){
 
 	event.preventDefault();
 	if (menu_state == 1){
 		upgrades.classList.remove('menu_actived');
 		menu_state = 0;
+		menu_btn.classList.remove('left');
 	}
 	else {
 		upgrades.classList.add('menu_actived');
 		menu_state = 1;
+		menu_btn.classList.add('left');
 	}
 
 	
@@ -75,6 +78,7 @@ document.querySelector('.menu_btn').addEventListener('click', function(event){
 var chicken 								= {};
 chicken.elements						= {};
 chicken.elements.container	= document.querySelector('.chicken_character');
+chicken.elements.picture	= document.querySelector('.chicken_picture');
 
 var cackle = new Audio('./src/music/cackle_chicken.mp3');
 
@@ -103,7 +107,6 @@ var state_time = document.querySelector('.pause_btn');
 	day_time   = document.querySelector('.day_time');
 	bar_pause = state_time.querySelector('polygon');
 	bar_play  = state_time.querySelectorAll('path');
-	console.log(bar_play);
 
 state_time.addEventListener('click', function(event){
 	event.preventDefault();
@@ -116,6 +119,9 @@ state_time.addEventListener('click', function(event){
 		//display normal chicken
 		if ( chicken.elements.container.classList.contains('sleeping') )
 			chicken.elements.container.classList.remove('sleeping');
+
+		if ( chicken.elements.picture.classList.contains('sleeping') )
+			chicken.elements.picture.classList.remove('sleeping');
 		
 		//launch day soundtrack
 		soundtrack.setAttribute('src','src/music/day_soundtrack.mp3');
@@ -128,6 +134,9 @@ state_time.addEventListener('click', function(event){
 		//display sleeping chicken
 		if ( !chicken.elements.container.classList.contains('sleeping') )
 			chicken.elements.container.classList.add('sleeping');
+
+		if ( !chicken.elements.picture.classList.contains('sleeping') )
+			chicken.elements.picture.classList.add('sleeping');
 		
 		//launch night soundtrack
 		soundtrack.setAttribute('src','src/music/night_soundtrack.mp3');
@@ -229,11 +238,11 @@ loop();
 /** btn_mute **/
 
 var muted = false;
-console.log(muted);
 
 var mute_btn   = document.querySelector('.mute_btn');
 	speaker    = mute_btn.querySelectorAll('.speaker');
 	sound_wave = mute_btn.querySelectorAll('.sound_wave');
+	soundtrack = document.querySelector('audio.soundtrack');
 
 mute_btn.addEventListener('click', function(){
 
@@ -243,12 +252,16 @@ mute_btn.addEventListener('click', function(){
 			sound_wave[g].style.opacity = '1';
 		}
 		muted = false;
+		soundtrack.volume = 1;
+		cackle.volume = 1;
 	}
 	else {
 		for (g = 0; g < sound_wave.length ; g++){
 			sound_wave[g].style.opacity = '0';
 		}	
 		muted = true;
+		soundtrack.volume = 0;
+		cackle.volume = 0;
 	}
 
 });
