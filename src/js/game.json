@@ -1,43 +1,137 @@
 var game = [
 	{
-		"level": 0,
-		"upgrades": [],
-		"habitat": [
-			{"name":"Cardboard", "source":"../img/habitat/cardboard.svg", "cost":0}
+		"level":0,
+		"habitat_upgrades": "",
+		"consumable_upgrades": "",
+		"habitat":[
+			{
+				"name":"Cardboard",
+				"source":"src/img/habitat/cardboard.svg",
+				"cost":0,
+				"bought":true
+			}
 		]
 	},
 	{
-		"level": 1,
-		"upgrades": [
-			{"name":"Light", "source":"../img/ugrade/cardboard_light.svg", "cost":30}
+		"level":1,
+		"habitat_upgrades":[
+			{
+				"name":"Light",
+				"source":"src/img/upgrade/cardboard_light.svg",
+				"cost":30,
+				"bought":false
+			}
 		],
-		"habitat": []
+		"consumable_upgrades":"",
+		"habitat":""
 	},
 	{
-		"level": 2,
-		"upgrades": [
+		"level":2,
+		"habitat_upgrades":"",
+		"consumable_upgrades":[
 			{
-				"name":"Seeds", "source":"../img/upgrade/seeds.svg", "cost":5
+				"name":"Seeds",
+				"source":"src/img/upgrade/seeds.svg",
+				"cost":5,
+				"bought":false
 			},
 			{
-				"name":"Water", "source":"../img/upgrade/water.svg", "cost":5
-			},
+				"name":"Water",
+				"source":"src/img/upgrade/water.svg",
+				"cost":5,
+				"bought":false
+			}
 		],
-		"habitat": []
+		"habitat":""
 	},
 	{
-		"level": 3,
-		"upgrades": [],
-		"habitat": []
+		"level":3,
+		"habitat_upgrades":"",
+		"consumable_upgrades":"",
+		"habitat": ""
 	},
 	{
-		"level": 4,
-		"upgrades": [],
-		"habitat": []
+		"level":4,
+		"habitat_upgrades":"",
+		"consumable_upgrades":"",
+		"habitat":""
 	},
 	{
-		"level": 5,
-		"upgrades": [],
-		"habitat": []
+		"level":5,
+		"habitat_upgrades":"",
+		"consumable_upgrades":[
+			{
+				"name":"Pizza",
+				"source":"src/img/upgrade/pizza.svg",
+				"cost":15,
+				"bought":false
+			}
+		],
+		"habitat":[
+			{
+				"name":"Cage",
+				"source":"src/img/habitat/cage.svg",
+				"cost":300,
+				"bought":false
+			}
+		]
+	},
+	{
+		"level":6,
+		"habitat_upgrades":"",
+		"consumable_upgrades":[
+			{
+				"name":"Eggnog",
+				"source":"src/img/upgrade/eggnog.svg",
+				"cost":40,
+				"bought":false
+			}
+		],
+		"habitat": ""
+	},
+	{
+		"level":7,
+		"habitat_upgrades":"",
+		"consumable_upgrades":[
+			{
+				"name":"Noodles",
+				"source":"src/img/upgrade/noodle.svg",
+				"cost":70,
+				"bought":false
+			}
+		],
+		"habitat":""
+	},
+	{
+		"level":8,
+		"habitat_upgrades":[
+			{
+				"name":"Golden egg",
+				"source":"src/img/upgrade/golden_egg.svg",
+				"cost":200,
+				"bought":false
+			}
+		],
+		"consumable_upgrades":"",
+		"habitat":""
+	},
+	{
+		"level":9,
+		"habitat_upgrades":"",
+		"consumable_upgrades":"",
+		"habitat": ""
+	},
+	{
+		"level":10,
+		"habitat_upgrades":"",
+		"consumable_upgrades":"",
+		"habitat":[
+			{
+				"name":"Open air plot",
+				"source":"src/img/habitat/cage.svg",
+				"cost":1000,
+				"bought":false
+			}
+		]
 	}
 ]

@@ -118,7 +118,7 @@ state_time.addEventListener('click', function(event){
 		
 		//launch day soundtrack
 		soundtrack.setAttribute('src','src/music/day_soundtrack.mp3');
-		
+	
 	} else {
 		day_state = 'night';
 		document.querySelector('.black_screen_bot').style.opacity = "0.5";
