@@ -577,7 +577,9 @@ function automatic_food(){
       localStorage.actual_thirst = Number(localStorage.max_thirst);
     }
     hunger_actualisation();
+    reverse_chicken_hunger_animation();
     thirst_actualisation(); 
+    reverse_thirst_chicken_animation();
     clicker.el.container.gamer_interface.hunger_bar.style.transform = 'scaleX(' + Number(localStorage.actual_hunger)/Number(localStorage.max_hunger) + ')';
     clicker.el.container.gamer_interface.thirst_bar.style.transform = 'scaleX(' + Number(localStorage.actual_thirst)/Number(localStorage.max_thirst) + ')';
   }
