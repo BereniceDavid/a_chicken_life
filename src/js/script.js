@@ -117,8 +117,8 @@ state_time.addEventListener('click', function(event){
 			chicken.elements.container.classList.remove('sleeping');
 		
 		//launch day soundtrack
-		soundtrack.setAttribute('src','src/music/day_soundtrack.mp3');
-		
+//		soundtrack.setAttribute('src','src/music/day_soundtrack.mp3');
+//		
 	} else {
 		day_state = 'night';
 		document.querySelector('.black_screen_bot').style.opacity = "0.5";
@@ -129,7 +129,7 @@ state_time.addEventListener('click', function(event){
 			chicken.elements.container.classList.add('sleeping');
 		
 		//launch night soundtrack
-		soundtrack.setAttribute('src','src/music/night_soundtrack.mp3');
+//		soundtrack.setAttribute('src','src/music/night_soundtrack.mp3');
 	}
 });
 
