@@ -129,6 +129,7 @@ state_time.addEventListener('click', function(event){
 		
 		//launch day soundtrack
 		soundtrack.setAttribute('src','src/music/day_soundtrack.mp3');
+		
 		chicken_thirst_animation();
 		chicken_hunger_animation();
 	
@@ -144,16 +145,21 @@ state_time.addEventListener('click', function(event){
 		//display sleeping chicken
 		if ( !chicken.elements.container.classList.contains('sleeping') )
 			chicken.elements.container.classList.add('sleeping');
-		if ( chicken.elements.container.classList.contains('sad') )
-			if ( chicken.elements.container.classList.remove('sad') )
-
+		
 		if ( !chicken.elements.picture.classList.contains('sleeping') )
 			chicken.elements.picture.classList.add('sleeping');
+		
+		if ( chicken.elements.container.classList.contains('sad') )
+			chicken.elements.container.classList.remove('sad');
+
 		if ( chicken.elements.picture.classList.contains('sad') )
-			if ( chicken.elements.picture.classList.remove('sad') )
+			chicken.elements.picture.classList.remove('sad');
 		
 		//launch night soundtrack
 		soundtrack.setAttribute('src','src/music/night_soundtrack.mp3');
+		
+		reverse_chicken_thirst_animation();
+		reverse_chicken_hunger_animation();
 	}
 });
 
