@@ -57,7 +57,11 @@ clicker.el.container.gamer_interface.level = clicker.el.container.querySelector(
 clicker.el.container.improvements_content = clicker.el.container.querySelector('.improvements_content');
 clicker.el.container.improvements_content.li = clicker.el.container.improvements_content.querySelectorAll('ul li');
 
-//localStorage.clear();
+/** Pop up beginning **/
+clicker.el.container.pop_up_beginning = clicker.el.container.querySelector('.pop-up-beginning');
+clicker.el.container.pop_up_beginning.button_beginning = clicker.el.container.pop_up_beginning.querySelector('.button-beginning');
+
+localStorage.clear();
 console.log(localStorage.level);
 
 function init(){
@@ -83,6 +87,7 @@ function init(){
   else{
     clicker.el.container.gamer_interface.xp_bar.setAttribute("value", 5 * 2 * Number(localStorage.level));
     clicker.el.container.gamer_interface.level.innerHTML = "lvl " + Number(localStorage.level);
+    clicker.el.container.pop_up_beginning.style.display = "none";
   }
 
   if(localStorage.actual_xp == undefined){
@@ -161,6 +166,16 @@ function click_incrementation(){
   localStorage.clickcount = Number(localStorage.clickcount) + Number(localStorage.incrementation);
   clicker.el.container.score.innerHTML = localStorage.clickcount;
 }
+
+/****************
+
+Pop up beginning
+
+****************/
+
+clicker.el.container.pop_up_beginning.button_beginning.addEventListener('click', function(){
+  clicker.el.container.pop_up_beginning.style.display = "none";
+});
 
 /*************
 
