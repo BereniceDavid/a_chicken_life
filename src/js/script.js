@@ -78,6 +78,7 @@ chicken.elements.container	= document.querySelector('.chicken_character');
 
 var cackle = new Audio('./src/music/cackle_chicken.mp3');
 
+var day_state = 'day';
 
 chicken.elements.container.addEventListener( 'click', function( event )
 {
