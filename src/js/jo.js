@@ -41,9 +41,9 @@ var home_content = document.querySelector('.consumables_content'),
 
 for (q = 0; q < home_buy.length; q++){
   home_buy[q].addEventListener('click', function(){
-    var cost_home   = this.querySelector('.price_upgrade').innerHTM,
-        lvl_home    = this.querySelector('.unit_lvl .level_required').innerHTML,
-        logo_home   = this.querySelector('.logo_upgrade img').getAttribute('src');
+    var cost_home  = this.querySelector('.price_upgrade').innerHTML,
+        lvl_home   = this.querySelector('.unit_lvl .level_required').innerHTML,
+        logo_home  = this.querySelector('.logo_upgrade img').getAttribute('src');
 
         if (Number(localStorage.level) >= lvl_home){
             home_change.setAttribute('src', logo_home);
@@ -55,7 +55,6 @@ for (q = 0; q < home_buy.length; q++){
   });
   
 }
-
 
 
 
