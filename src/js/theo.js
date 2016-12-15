@@ -23,16 +23,22 @@ clicker.el.container.gamer_interface = clicker.el.container.querySelector('.stat
 clicker.el.container.gamer_interface.hunger = clicker.el.container.querySelector('.chicken_starve_bar');
 clicker.el.container.gamer_interface.actual_hunger = clicker.el.container.gamer_interface.querySelector('.chicken_starve_bar_content .bar_current_count');
 clicker.el.container.gamer_interface.hunger_bar = clicker.el.container.gamer_interface.querySelector('.chicken_starve_bar_content');
+clicker.el.container.gamer_interface.current_hunger = clicker.el.container.gamer_interface.querySelector('.current_starve');
+clicker.el.container.gamer_interface.max_hunger = clicker.el.container.gamer_interface.querySelector('.total_starve');
 
 /**Thirst**/
 
 clicker.el.container.gamer_interface.thirst = clicker.el.container.querySelector('.chicken_thirst_bar');
 clicker.el.container.gamer_interface.thirst_bar = clicker.el.container.querySelector('.chicken_thirst_bar_content');
 clicker.el.container.gamer_interface.actual_thirst = clicker.el.container.gamer_interface.thirst_bar.querySelector('.bar_current_count');
+clicker.el.container.gamer_interface.current_thirst = clicker.el.container.gamer_interface.querySelector('.current_thirst');
+clicker.el.container.gamer_interface.max_thirst = clicker.el.container.gamer_interface.querySelector('.total_thirst');
 
 /**xp**/
 clicker.el.container.gamer_interface.xp_bar = clicker.el.container.querySelector('.chicken_lvl_content .bar_current_count');
 clicker.el.container.gamer_interface.level = clicker.el.container.querySelector('.current_lvl');
+clicker.el.container.gamer_interface.current_xp = clicker.el.container.gamer_interface.querySelector('.current_xp');
+clicker.el.container.gamer_interface.total_xp = clicker.el.container.gamer_interface.querySelector('.total_xp');
 
 
 //clicker.el.container.gamer_interface.actual_xp = clicker.el.container.querySelector('.actual-xp');
@@ -57,11 +63,15 @@ clicker.el.container.gamer_interface.level = clicker.el.container.querySelector(
 clicker.el.container.improvements_content = clicker.el.container.querySelector('.improvements_content');
 clicker.el.container.improvements_content.li = clicker.el.container.improvements_content.querySelectorAll('ul li');
 
+/**Boost content**/
+clicker.el.container.boost_content = clicker.el.container.querySelector('.boosts_content');
+clicker.el.container.boost_content.li = clicker.el.container.boost_content.querySelectorAll('ul li');
+
 /** Pop up beginning **/
 clicker.el.container.pop_up_beginning = clicker.el.container.querySelector('.pop-up-beginning');
 clicker.el.container.pop_up_beginning.button_beginning = clicker.el.container.pop_up_beginning.querySelector('.button-beginning');
 
-localStorage.clear();
+//localStorage.clear();
 console.log(localStorage.level);
 
 function init(){
@@ -77,7 +87,7 @@ function init(){
   if(localStorage.upgrade_2_delay == undefined)
     localStorage.upgrade_2_delay = 2000;
   if(localStorage.clickcount == undefined)
-    localStorage.clickcount = 0;
+    localStorage.clickcount = 600;
 
   /**XP**/
   if(localStorage.level == undefined || localStorage.level == 0){
@@ -96,6 +106,8 @@ function init(){
   else{
     clicker.el.container.gamer_interface.xp_bar.style.transform = 'scaleX(' + Number(localStorage.actual_xp)/clicker.el.container.gamer_interface.xp_bar.getAttribute('value') + ')';
   }
+  
+  xp_actualisation();
 
   /**Hunger**/
 
@@ -108,6 +120,7 @@ function init(){
     clicker.el.container.gamer_interface.hunger_bar.style.transform = 'scaleX(' + Number(localStorage.actual_hunger)/localStorage.max_hunger + ')';
   }
 
+  hunger_actualisation();
   chicken_hunger_animation();
 
   /**Thirst**/
@@ -121,6 +134,7 @@ function init(){
     clicker.el.container.gamer_interface.thirst_bar.style.transform = 'scaleX(' + Number(localStorage.actual_thirst)/localStorage.max_thirst + ')';
   }
 
+  thirst_actualisation();
   chicken_thirst_animation();
 
   //  /**Upgrade 1**/
@@ -167,6 +181,10 @@ function click_incrementation(){
   clicker.el.container.score.innerHTML = localStorage.clickcount;
 }
 
+function gold_click_incrementation(){
+  localStorage.clickcount = Number(localStorage.clickcount) + (Number(localStorage.incrementation) * 2 * Number(localStorage.upgrade_3));
+  clicker.el.container.score.innerHTML = localStorage.clickcount;
+}
 /****************
 
 Pop up beginning
@@ -201,6 +219,7 @@ function xp(){
   var xp_max = Number(clicker.el.container.gamer_interface.xp_bar.getAttribute('value'));
   //  clicker.el.container.gamer_interface.actual_xp.innerHTML = localStorage.actual_xp;  
   clicker.el.container.gamer_interface.xp_bar.style.transform = 'scaleX(' + Number(localStorage.actual_xp)/xp_max + ')';
+  xp_actualisation();
   if(localStorage.actual_xp >= xp_max){
 
     /*XP Gestion*/
@@ -229,6 +248,11 @@ function xp(){
   }
 }
 
+function xp_actualisation(){
+  clicker.el.container.gamer_interface.current_xp.innerHTML = localStorage.actual_xp;
+  clicker.el.container.gamer_interface.total_xp.innerHTML = Number(clicker.el.container.gamer_interface.xp_bar.getAttribute('value'));
+}
+
 /***************
 
 Hunger Gestion
@@ -242,6 +266,7 @@ function hunger(incrementation){
     localStorage.actual_hunger = Number(localStorage.actual_hunger) - incrementation;
     clicker.el.container.gamer_interface.hunger_bar.style.transform = 'scaleX(' + Number(localStorage.actual_hunger)/Number(localStorage.max_hunger) + ')';
     chicken_hunger_animation();
+    hunger_actualisation();
   }
 }
 
@@ -272,7 +297,7 @@ function reverse_chicken_hunger_animation(){
   if(Number(localStorage.actual_hunger) >= Number(localStorage.max_hunger)/2){
     if(Number(localStorage.actual_thirst) >= Number(localStorage.max_thirst)/2)
       chicken.elements.container.classList.remove('sad');
-    clicker.el.container.gamer_interface.hunger_bar.style.backgroundColor = "lightgreen";
+    clicker.el.container.gamer_interface.hunger_bar.style.backgroundColor = "#F47F5F";
   }
 }
 
@@ -283,6 +308,7 @@ function hunger_augmentation(augmentation){
   } 
   clicker.el.container.gamer_interface.hunger_bar.style.transform = 'scaleX(' + Number(localStorage.actual_hunger)/Number(localStorage.max_hunger) + ')';
   reverse_chicken_hunger_animation();
+  hunger_actualisation();
 }
 
 function hunger_max()
@@ -291,9 +317,14 @@ function hunger_max()
   localStorage.actual_hunger = localStorage.max_hunger;
   clicker.el.container.gamer_interface.hunger_bar.style.transform = 'scaleX(' + Number(localStorage.actual_hunger)/Number(localStorage.max_hunger) + ')';
   reverse_chicken_hunger_animation();
+  hunger_actualisation();
   var time = setTimeout(function(){ hunger_max_upgrade = false }, 12000);
 }
 
+function hunger_actualisation(){
+  clicker.el.container.gamer_interface.current_hunger.innerHTML = localStorage.actual_hunger;
+  clicker.el.container.gamer_interface.max_hunger.innerHTML = localStorage.max_hunger;
+}
 /*****************
 
 Thirst Gestion
@@ -308,6 +339,7 @@ function thirst(incrementation){
     localStorage.actual_thirst = Number(localStorage.actual_thirst) - incrementation;
     clicker.el.container.gamer_interface.thirst_bar.style.transform = 'scaleX(' + Number(localStorage.actual_thirst)/Number(localStorage.max_thirst) + ')';
     chicken_thirst_animation();
+    thirst_actualisation();
   }
 }
 
@@ -339,7 +371,7 @@ function reverse_thirst_chicken_animation(){
     ){
     if(Number(localStorage.actual_hunger) >= Number(localStorage.max_hunger)/2)
       chicken.elements.container.classList.remove('sad');
-    clicker.el.container.gamer_interface.actual_thirst.style.backgroundColor = "green";
+    clicker.el.container.gamer_interface.actual_thirst.style.backgroundColor = "cyan";
   }
 }
 
@@ -350,6 +382,12 @@ function thirst_augmentation(augmentation){
     localStorage.actual_thirst = localStorage.max_thirst;
   } clicker.el.container.gamer_interface.thirst_bar.style.transform = 'scaleX(' + Number(localStorage.actual_thirst)/Number(localStorage.max_thirst) + ')';
   reverse_thirst_chicken_animation();
+  thirst_actualisation();
+}
+
+function thirst_actualisation(){
+  clicker.el.container.gamer_interface.current_thirst.innerHTML = localStorage.actual_thirst;
+  clicker.el.container.gamer_interface.max_thirst.innerHTML = localStorage.max_thirst;
 }
 
 /**************************
@@ -393,4 +431,44 @@ function classic_augmentation(m){
       }
     }
   }
+}
+
+/******************
+
+Boost content
+
+*******************/
+
+for(var t = 0; t < clicker.el.container.boost_content.li.length; t++){
+  clicker.el.container.boost_content.li[t].addEventListener('click', function(){
+    var selected_upgrade = this;
+    for( var m = 0; m < clicker.el.container.boost_content.li.length; m++){
+      if(clicker.el.container.boost_content.li[m] == this)
+        boost_augmentation(m);
+    }
+  });
+}
+
+function boost_augmentation(m){
+  if(day_state == 'day'){
+    var cost = Number(clicker.el.container.boost_content.li[m].querySelector('.price_upgrade').innerHTML);
+    var level_required = Number(clicker.el.container.boost_content.li[m].querySelector('.unit_lvl').innerHTML.charAt(2));
+    console.log(level_required)
+    if(Number(localStorage.clickcount) >= cost && Number(localStorage.level) >= level_required){
+      localStorage.clickcount = Number(localStorage.clickcount) - cost;
+      clicker.el.container.score.innerHTML = localStorage.clickcount;
+      if(m == 1)
+        gold_egg();
+    }
+  }
+}
+
+/*****************
+
+Gold Egg
+
+*****************/
+
+function gold_egg(){
+  localStorage.upgrade_3 = Number(localStorage.upgrade_3) + 1;
 }
