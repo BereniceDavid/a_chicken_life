@@ -1,0 +1,14 @@
+.hover_description {
+	color: #fff;
+	z-index: 400;
+	position: absolute;
+	right: 349px;
+	width: auto;
+	padding: 6px;
+	background-color: #f28d4f;
+	border: solid #d35400;
+	border-width: 4px 0 4px 4px;
+	border-radius: 1px 0 0 1px;
+	
+	display: none;
+}

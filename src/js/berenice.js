@@ -9,9 +9,9 @@ var upgrade = '';
 //fill var upgrade with the upgrade element we want to display
 function upgrade_html(src, name, cost, level, nbr_upgrade) {
 	upgrade = document.createElement("li");
+	
 	upgrade.innerHTML = '<span class="logo_upgrade"><img src="'+ src +'" class="icon"></span><span class="name_upgrade">'+ name +'</span><img src="src/img/interface/gold.svg" class="gold_icon"><span class="price_upgrade">'+ cost +'</span><span class="unit_lvl">Lv'+ level +'</span><span class="number_upgrade">'+ nbr_upgrade +'</span>';
 }
-
 
 for(var k = 0; k < game.length; k++) {
 	
@@ -39,4 +39,57 @@ for(var k = 0; k < game.length; k++) {
 			fill_location_list[1].appendChild(upgrade);
 		}
 	}
+}
+
+var hover_description = document.querySelector('.hover_description'),
+		all_li_upgrade = document.querySelectorAll('.list_upgrades ul li'),
+		this_li_name = "";
+
+//Detect mouse position
+var mouse = { x: 0, y: 0 };
+
+document.addEventListener('mousemove', function(event) {
+  mouse.y = event.clientY;
+});
+	
+for(var p = 0; p < all_li_upgrade.length; p++) {
+	
+	all_li_upgrade[p].addEventListener('mouseover', function() {
+		
+		console.log(mouse.y);
+		
+		this_li_name = this.querySelector('.name_upgrade').innerHTML;
+		
+		for(var browse_json = 0; browse_json < game.length; browse_json++) {
+				
+			//check food drink upgrades
+			for(var browse_in_consumable = 0; browse_in_consumable < game[browse_json].consumable_upgrades.length; browse_in_consumable++) {
+				if( game[browse_json].consumable_upgrades[browse_in_consumable].name == this_li_name ) {
+					hover_description.style.display = 'block';
+					hover_description.style.top = mouse.y + 'px';
+				}
+			}
+			
+			//check habitat upgrades
+			for(var browse_in_habitat_upgrades = 0; browse_in_habitat_upgrades < game[browse_json].habitat_upgrades.length;browse_in_habitat_upgrades++) {
+				if( game[browse_json].habitat_upgrades[browse_in_habitat_upgrades].name == this_li_name ) {
+					hover_description.style.display = 'block';
+					hover_description.style.top = mouse.y +'px';
+				}
+			}
+			
+			//check habitats
+			for(var browse_habitat = 0; browse_habitat < game[browse_json].habitat.length; browse_habitat++) {
+				if( game[browse_json].habitat[browse_habitat].name == this_li_name ) {
+					hover_description.style.display = 'block';
+					hover_description.style.top = mouse.y +'px';
+				}
+			}
+		}
+
+	});
+	
+	all_li_upgrade[p].addEventListener('mouseout', function() {
+		hover_description.style.display = 'none';
+	});
 }
