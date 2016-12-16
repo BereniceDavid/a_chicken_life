@@ -1032,12 +1032,15 @@ body {
 }
 
 .chicken_character.happy .normal_chicken .eyes,
-.chicken_character.happy .sad_chicken .eyes
+.chicken_character.happy .sad_chicken .eyes,
+.chicken_picture.happy .normal_chicken .eyes,
+.chicken_picture.happy .sad_chicken .eyes
 {
 	opacity: 0;
 }
 
-.chicken_character.happy .happy_chicken
+.chicken_character.happy .happy_chicken,
+.chicken_picture.happy .happy_chicken
 {
 	opacity: 1;
 }
