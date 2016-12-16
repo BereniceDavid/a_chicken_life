@@ -45,12 +45,12 @@ for (q = 0; q < home_buy.length; q++){
         lvl_home   = this.querySelector('.unit_lvl .level_required').innerHTML,
         logo_home  = this.querySelector('.logo_upgrade img').getAttribute('src');
 
-        if (Number(localStorage.level) >= lvl_home){
+        if (Number(localStorage.level) >= lvl_home && Number(localStorage.clickcount) >= cost_home){
             home_change.setAttribute('src', logo_home);
             localStorage.clickcount = Number(localStorage.clickcount) - cost_home;
             clicker.el.container.score.innerHTML = localStorage.clickcount;
             this.style.display = 'none';
-            localStorage.incrementation = Number(localStorage.incrementation) + 1;
+            localStorage.incrementation = Number(localStorage.incrementation) + 2;
         }
   });
   
