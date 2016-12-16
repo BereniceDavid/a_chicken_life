@@ -496,6 +496,8 @@ body {
 
 .pop-up-beginning p.subtitle
 {
+	width: 90%;
+	margin: auto;
 	color:#fff2c7;
   font-size: 30px;
 	margin-bottom: 70px;
@@ -1173,6 +1175,32 @@ body {
 	{
 		width: 100vw;
 	}
+	
+	.pop-up-beginning {
+		left: 20%;
+	}
+
+	.pop-up-beginning h1
+	{
+  	font-size: 40px;
+	}
+
+	.pop-up-beginning p.subtitle
+	{
+  	font-size: 20px;
+		margin-bottom: 20px;
+	}
+
+	.pop-up-beginning p.intro
+	{
+	  font-size: 20px;
+	}
+
+	.pop-up-beginning .button-beginning
+	{
+    font-size: 30px;
+    margin: 120px auto 50px auto;
+	}
 
 }
 
@@ -1183,12 +1211,28 @@ body {
 	{
 		display: none;
 	}
-
+	
+	
 }
 
 /* Medium only */
 @media only screen and (min-width: 40em) and (max-width: 63.9375em) {
 
+	.pop-up-beginning p.subtitle
+	{
+		margin-bottom: 30px;
+		font-size: 25px;
+	}
+	
+	.pop-up-beginning p.intro
+	{
+		font-size: 22px;
+	}
+
+	.pop-up-beginning .button-beginning
+	{
+    margin: 120px auto 50px auto;
+	}
 
 }
 
