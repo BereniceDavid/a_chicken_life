@@ -104,7 +104,7 @@ function lock_upgrades_level() {
 		if( all_li_level[p].innerHTML > Number(localStorage.level) ) {
 			all_li_upgrade[p].style.backgroundColor = "#d07626";
 		} else {
-			all_li_upgrade[p].style.backgroundColor = "#e67e22";
+			all_li_upgrade[p].style.backgroundColor = "#f28d4f";
 		}
 	}
 }
