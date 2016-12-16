@@ -35,10 +35,9 @@ for(var k = 0; k < game.length; k++) {
 	//display habitats 
 	if (!game[k].habitat == "") {
 		for(var n = 0; n < game[k].habitat.length; n++) {
-			if (game[k].habitat[n].name != "Fender") {
-				upgrade_html(game[k].habitat[n].source, game[k].habitat[n].name, game[k].habitat[n].cost, game[k].level, '');
-				fill_location_list[1].appendChild(upgrade);
-			}
+			upgrade_html(game[k].habitat[n].source, game[k].habitat[n].name, game[k].habitat[n].cost, game[k].level, '');
+			
+			fill_location_list[1].appendChild(upgrade);
 		}
 	}
 }
@@ -103,8 +102,10 @@ function lock_upgrades_level() {
 
 		if( all_li_level[p].innerHTML > Number(localStorage.level) ) {
 			all_li_upgrade[p].style.backgroundColor = "#d07626";
+			all_li_upgrade[p].style.color = "#7c7c7c";
 		} else {
 			all_li_upgrade[p].style.backgroundColor = "#f28d4f";
+			all_li_upgrade[p].style.color = "#fefefe";
 		}
 	}
 }
