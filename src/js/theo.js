@@ -91,7 +91,7 @@ function init(){
 
   /**XP**/
   if(localStorage.level == undefined || localStorage.level == 0){
-    localStorage.level = 0;
+    localStorage.level = 9;
     clicker.el.container.gamer_interface.xp_bar.setAttribute("value", 5);
   }
   else{
@@ -153,6 +153,13 @@ function init(){
   clicker.el.container.score.innerHTML = localStorage.clickcount;
 
   //  level_check();
+  init_upgrade();
+  if(Number(localStorage.upgrade_3) == 0)
+    clicker.el.container.boost_content.li[0].querySelector('.price_upgrade').innerHTML = "200";
+  if(Number(localStorage.upgrade_2) == 0)
+    clicker.el.container.boost_content.li[1].querySelector('.price_upgrade').innerHTML = "400";
+  if(Number(localStorage.automatic_food) == 0)
+    clicker.el.container.boost_content.li[2].querySelector('.price_upgrade').innerHTML = "600";
 }
 
 init();
@@ -274,7 +281,7 @@ function chicken_hunger_animation(){
   if(Number(localStorage.actual_hunger) <= Number(localStorage.max_hunger)/2){
     if ( !chicken.elements.container.classList.contains('sad') )
       chicken.elements.container.classList.add('sad');
-		if ( !chicken.elements.picture.classList.contains('sad') )
+    if ( !chicken.elements.picture.classList.contains('sad') )
       chicken.elements.picture.classList.add('sad');
     clicker.el.container.gamer_interface.hunger_bar.style.backgroundColor = "#f2c637"
   }
@@ -287,7 +294,7 @@ function chicken_hunger_animation(){
       chicken.elements.container.classList.remove('sad');
     if ( !chicken.elements.container.classList.contains('dead') )
       chicken.elements.container.classList.add('dead');
-		if ( chicken.elements.picture.classList.contains('sad') )
+    if ( chicken.elements.picture.classList.contains('sad') )
       chicken.elements.picture.classList.remove('sad');
     if ( !chicken.elements.picture.classList.contains('dead') )
       chicken.elements.picture.classList.add('dead');
@@ -302,9 +309,9 @@ function reverse_chicken_hunger_animation(){
   }
   if(Number(localStorage.actual_hunger) >= Number(localStorage.max_hunger)/2){
     if(Number(localStorage.actual_thirst) >= Number(localStorage.max_thirst)/2) {
-			chicken.elements.container.classList.remove('sad');
-			chicken.elements.picture.classList.remove('sad');
-		}
+      chicken.elements.container.classList.remove('sad');
+      chicken.elements.picture.classList.remove('sad');
+    }
     clicker.el.container.gamer_interface.hunger_bar.style.backgroundColor = "#F47F5F";
   }
 }
@@ -355,7 +362,7 @@ function chicken_thirst_animation(){
   if(Number(localStorage.actual_thirst) <= Number(localStorage.max_thirst)/2){
     if ( !chicken.elements.container.classList.contains('sad') )
       chicken.elements.container.classList.add('sad');
-		if ( !chicken.elements.picture.classList.contains('sad') )
+    if ( !chicken.elements.picture.classList.contains('sad') )
       chicken.elements.picture.classList.add('sad');
     clicker.el.container.gamer_interface.actual_thirst.style.backgroundColor = "#ffc300"
   }
@@ -368,7 +375,7 @@ function chicken_thirst_animation(){
       chicken.elements.container.classList.remove('sad');
     if ( !chicken.elements.container.classList.contains('dead') )
       chicken.elements.container.classList.add('dead');
-		if ( chicken.elements.picture.classList.contains('sad') )
+    if ( chicken.elements.picture.classList.contains('sad') )
       chicken.elements.picture.classList.remove('sad');
     if ( !chicken.elements.picture.classList.contains('dead') )
       chicken.elements.picture.classList.add('dead');
@@ -384,9 +391,9 @@ function reverse_thirst_chicken_animation(){
   if(Number(localStorage.actual_thirst) >= Number(localStorage.max_thirst)/2
     ){
     if(Number(localStorage.actual_hunger) >= Number(localStorage.max_hunger)/2) {
-			chicken.elements.container.classList.remove('sad');
-			chicken.elements.picture.classList.remove('sad');
-		}
+      chicken.elements.container.classList.remove('sad');
+      chicken.elements.picture.classList.remove('sad');
+    }
     clicker.el.container.gamer_interface.actual_thirst.style.backgroundColor = "cyan";
   }
 }
@@ -394,7 +401,7 @@ function reverse_thirst_chicken_animation(){
 function thirst_augmentation(augmentation){
   localStorage.actual_thirst = Number(localStorage.actual_thirst) + augmentation;
   if(Number(localStorage.actual_thirst) > Number(localStorage.max_thirst)){
-//    console.log('sa devrai pas rentrer');
+    //    console.log('sa devrai pas rentrer');
     localStorage.actual_thirst = localStorage.max_thirst;
   } clicker.el.container.gamer_interface.thirst_bar.style.transform = 'scaleX(' + Number(localStorage.actual_thirst)/Number(localStorage.max_thirst) + ')';
   reverse_thirst_chicken_animation();
@@ -473,8 +480,15 @@ function boost_augmentation(m){
     if(Number(localStorage.clickcount) >= cost && Number(localStorage.level) >= level_required){
       localStorage.clickcount = Number(localStorage.clickcount) - cost;
       clicker.el.container.score.innerHTML = localStorage.clickcount;
-      if(m == 1)
+      if(m == 0){
         gold_egg(cost, m, level_required);
+      }
+      else if(m == 1){
+        daily_egg(cost, m, level_required);
+      }
+      else if(m == 2){
+        dispenser(cost, m, level_required);
+      }
     }
   }
 }
@@ -487,6 +501,7 @@ Gold Egg
 
 function gold_egg(cost, m, level_required){
   localStorage.upgrade_3 = Number(localStorage.upgrade_3) + 1;
+  clicker.el.container.boost_content.li[m].querySelector('.number_upgrade').innerHTML = Number(localStorage.upgrade_3);
   clicker.el.container.boost_content.li[m].querySelector('.price_upgrade').innerHTML = cost * 4;
   clicker.el.container.boost_content.li[m].querySelector('.level_required').innerHTML = (level_required + 2);
   console.log(Number(clicker.el.container.boost_content.li[m].querySelector('.unit_lvl').innerHTML.charAt(2)))
@@ -495,5 +510,112 @@ function gold_egg(cost, m, level_required){
   }
   else if(Number(localStorage.upgrade_3) == 2){
     clicker.el.container.boost_content.li[m].querySelector('img').setAttribute('src', 'src/img/upgrade/platine-egg.svg');
+  }
+}
+
+/****************
+
+Daily egg
+
+*****************/
+
+function daily_egg(cost, m, level_required){
+  localStorage.upgrade_2 = Number(localStorage.upgrade_2) + 1;
+  localStorage.upgrade_2_delay = Number(localStorage.upgrade_2_delay) / (Number(localStorage.upgrade_2));
+  clearInterval(timer_daily_egg);
+  timer_daily_egg = setInterval(upgrade_2_auto, Number(localStorage.upgrade_2_delay));
+  clicker.el.container.boost_content.li[m].querySelector('.number_upgrade').innerHTML = Number(localStorage.upgrade_2);
+  clicker.el.container.boost_content.li[m].querySelector('.price_upgrade').innerHTML = cost * 4;
+  clicker.el.container.boost_content.li[m].querySelector('.level_required').innerHTML = (level_required + 2);
+}
+
+function upgrade_2_auto(){
+  if(Boolean(Number(localStorage.upgrade_2)) == true && day_state == "day"){
+    localStorage.clickcount = Number(localStorage.clickcount)+1;
+    clicker.el.container.score.innerHTML = localStorage.clickcount;
+    hunger(1);
+    thirst(1);
+    level_check_house(1);
+  }
+}
+
+var timer_daily_egg = setInterval(upgrade_2_auto, Number(localStorage.upgrade_2_delay));
+
+/********************
+
+Dispenser
+
+********************/
+
+var timer_automatic_food = setInterval(automatic_food, 2000);
+
+function dispenser(cost, m, level_required){
+  localStorage.automatic_food = Number(localStorage.automatic_food) + 1;
+
+  clicker.el.container.boost_content.li[m].querySelector('.number_upgrade').innerHTML = Number(localStorage.automatic_food);
+  clicker.el.container.boost_content.li[m].querySelector('.price_upgrade').innerHTML = cost * 4;
+  clicker.el.container.boost_content.li[m].querySelector('.level_required').innerHTML = (level_required + 2);
+  
+  if(Number(localStorage.automatic_food) == 1){
+    clicker.el.container.boost_content.li[m].querySelector('img').setAttribute('src', 'src/img/upgrade/Distributeur_niveau_2.svg');
+  }
+  else if(Number(localStorage.automatic_food) == 2){
+    clicker.el.container.boost_content.li[m].querySelector('img').setAttribute('src', 'src/img/upgrade/Distributeur_niveau_3.svg');
+  }
+}
+
+function automatic_food(){
+  if(Boolean(Number(localStorage.automatic_food)) == true && day_state == "day"){
+    localStorage.actual_hunger = Number(localStorage.actual_hunger) + (10 * Number(localStorage.automatic_food));
+    if(Number(localStorage.actual_hunger) > Number(localStorage.max_hunger)){
+      localStorage.actual_hunger = Number(localStorage.max_hunger);
+    }
+    hunger_actualisation(); clicker.el.container.gamer_interface.hunger_bar.style.transform = 'scaleX(' + Number(localStorage.actual_hunger)/Number(localStorage.max_hunger) + ')';
+
+    localStorage.actual_thirst = Number(localStorage.actual_thirst) + (5 * Number(localStorage.automatic_food));
+    if(Number(localStorage.actual_thirst) > Number(localStorage.max_thirst)){
+      localStorage.actual_thirst = Number(localStorage.max_thirst);
+    }
+    hunger_actualisation();
+    reverse_chicken_hunger_animation();
+    thirst_actualisation(); 
+    reverse_thirst_chicken_animation();
+    clicker.el.container.gamer_interface.hunger_bar.style.transform = 'scaleX(' + Number(localStorage.actual_hunger)/Number(localStorage.max_hunger) + ')';
+    clicker.el.container.gamer_interface.thirst_bar.style.transform = 'scaleX(' + Number(localStorage.actual_thirst)/Number(localStorage.max_thirst) + ')';
+  }
+}
+
+function init_upgrade(){
+
+  /**Prices init**/
+
+  clicker.el.container.boost_content.li[0].querySelector('.price_upgrade').innerHTML = Number(clicker.el.container.boost_content.li[0].querySelector('.price_upgrade').innerHTML) * 4 * Number(localStorage.upgrade_3);
+  clicker.el.container.boost_content.li[1].querySelector('.price_upgrade').innerHTML = Number(clicker.el.container.boost_content.li[1].querySelector('.price_upgrade').innerHTML) * 4 * Number(localStorage.upgrade_2);
+  clicker.el.container.boost_content.li[2].querySelector('.price_upgrade').innerHTML = Number(clicker.el.container.boost_content.li[2].querySelector('.price_upgrade').innerHTML) * 4 * Number(localStorage.automatic_food);
+
+  /**lvl init**/
+  clicker.el.container.boost_content.li[0].querySelector('.level_required').innerHTML =  Number(clicker.el.container.boost_content.li[0].querySelector('.level_required').innerHTML) + (2 * Number(localStorage.upgrade_3));
+  clicker.el.container.boost_content.li[1].querySelector('.level_required').innerHTML =  Number(clicker.el.container.boost_content.li[1].querySelector('.level_required').innerHTML) + (2 * Number(localStorage.upgrade_2));
+  clicker.el.container.boost_content.li[2].querySelector('.level_required').innerHTML =  Number(clicker.el.container.boost_content.li[2].querySelector('.level_required').innerHTML) + (2 * Number(localStorage.automatic_food));
+
+  /**Number upgrade init**/
+
+  clicker.el.container.boost_content.li[0].querySelector('.number_upgrade').innerHTML = Number(localStorage.upgrade_3);
+  clicker.el.container.boost_content.li[1].querySelector('.number_upgrade').innerHTML = Number(localStorage.upgrade_2);
+  clicker.el.container.boost_content.li[2].querySelector('.number_upgrade').innerHTML = Number(localStorage.automatic_food);
+
+  /**Images init**/
+  if(Number(localStorage.upgrade_3) == 1){
+    clicker.el.container.boost_content.li[0].querySelector('img').setAttribute('src', 'src/img/upgrade/diamond-egg.svg');
+  }
+  else if(Number(localStorage.upgrade_3) == 2){
+    clicker.el.container.boost_content.li[0].querySelector('img').setAttribute('src', 'src/img/upgrade/platine-egg.svg');
+  }
+  
+  if(Number(localStorage.automatic_food) == 1){
+    clicker.el.container.boost_content.li[2].querySelector('img').setAttribute('src', 'src/img/upgrade/Distributeur_niveau_2.svg');
+  }
+  else if(Number(localStorage.automatic_food) == 2){
+    clicker.el.container.boost_content.li[2].querySelector('img').setAttribute('src', 'src/img/upgrade/Distributeur_niveau_3.svg');
   }
 }

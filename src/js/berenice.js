@@ -3,7 +3,7 @@ var fill_location_list = upgrades.querySelectorAll('.list_upgrades div ul');
 //fill_location_list[1] --> consumables_content :  habitat (habitat)
 //fill_location_list[2] --> boosts_content : decoration (habitat_upgrades)
 
-console.log(fill_location_list);
+//console.log(fill_location_list);
 var upgrade = '';
 
 //fill var upgrade with the upgrade element we want to display
@@ -35,7 +35,7 @@ for(var k = 0; k < game.length; k++) {
 	//display habitats 
 	if (!game[k].habitat == "") {
 		for(var n = 0; n < game[k].habitat.length; n++) {
-			if (game[k].habitat[n].name != "Cardboard") {
+			if (game[k].habitat[n].name != "Fender") {
 				upgrade_html(game[k].habitat[n].source, game[k].habitat[n].name, game[k].habitat[n].cost, game[k].level, '');
 				fill_location_list[1].appendChild(upgrade);
 			}
@@ -45,6 +45,7 @@ for(var k = 0; k < game.length; k++) {
 
 var hover_description = document.querySelector('.hover_description'),
 		all_li_upgrade = document.querySelectorAll('.list_upgrades ul li'),
+		all_li_level = document.querySelectorAll('.list_upgrades ul li span.level_required'),
 		this_li_name = "";
 
 //Detect mouse position
@@ -97,3 +98,13 @@ if (window.matchMedia("(max-width: 39.9375em)").matches) {
 	}
 }
 
+function lock_upgrades_level() {
+	for(var p = 0; p < all_li_upgrade.length; p++) {
+
+		if( all_li_level[p].innerHTML > Number(localStorage.level) ) {
+			all_li_upgrade[p].style.backgroundColor = "#d07626";
+		} else {
+			all_li_upgrade[p].style.backgroundColor = "#f28d4f";
+		}
+	}
+}

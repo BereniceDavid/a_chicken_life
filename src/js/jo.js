@@ -55,8 +55,4 @@ for (q = 0; q < home_buy.length; q++){
   });
   
 }
-
-
-
-
-
+lock_upgrades_level();
