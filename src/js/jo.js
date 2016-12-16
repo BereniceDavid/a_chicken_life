@@ -60,7 +60,87 @@ for (q = 0; q < home_buy.length; q++){
             this.style.display = 'none';
             localStorage.incrementation = Number(localStorage.incrementation) + 2;
         }
+
+        else if (Number(localStorage.level) >= lvl_home && Number(localStorage.clickcount) < cost_home){
+            var temp_color = this.querySelector('.price_upgrade').style.color = "red";
+            window.setTimeout(function(){
+
+              var color_temp = document.querySelectorAll('.price_upgrade');
+              for (s = 0; s < color_temp.length; s++){
+                color_temp[s].style.color = "#f1c40f";
+              }
+
+             }, 1000);  
+        }
   });
   
 }
+
+var improvement_content = document.querySelector('.boosts_content'),
+    improvement_buy     = improvement_content.querySelectorAll('ul li');
+
+for (d = 0; d < improvement_buy.length; d++){
+  improvement_buy[d].addEventListener('click', function(){
+    var cost_improvement  = this.querySelector('.price_upgrade').innerHTML,
+        lvl_improvement   = this.querySelector('.unit_lvl .level_required').innerHTML;
+
+        if (Number(localStorage.level) >= lvl_improvement && Number(localStorage.clickcount) < cost_improvement){
+            var temp_color = this.querySelector('.price_upgrade').style.color = "red";
+            window.setTimeout(function(){
+
+              var color_temp = document.querySelectorAll('.price_upgrade');
+              for (s = 0; s < color_temp.length; s++){
+                color_temp[s].style.color = "#f1c40f";
+              }
+
+             }, 1000);  
+        }
+  });
+  
+}
+
+var food_content = document.querySelector('.improvements_content'),
+    food_buy     = food_content.querySelectorAll('ul li');
+
+for (d = 0; d < food_buy.length; d++){
+  food_buy[d].addEventListener('click', function(){
+    var cost_food  = this.querySelector('.price_upgrade').innerHTML,
+        lvl_food   = this.querySelector('.unit_lvl .level_required').innerHTML;
+
+        if (Number(localStorage.level) >= lvl_food && Number(localStorage.clickcount) < cost_food){
+            var temp_color = this.querySelector('.price_upgrade').style.color = "red";
+            window.setTimeout(function(){
+
+              var color_temp = document.querySelectorAll('.price_upgrade');
+              for (s = 0; s < color_temp.length; s++){
+                color_temp[s].style.color = "#f1c40f";
+              }
+
+             }, 1000);  
+        }
+  });
+  
+}
+
+console.log(Number(localStorage.actual_hunger));
+console.log(Number(localStorage.max_hunger));
+
+if (Number(localStorage.max_hunger) == Number(localStorage.actual_hunger))
+{
+  console.log('rare as fck');
+}
+else
+{
+  console.log('eh ouais mon gars');
+}
+
+// if (Number(localStorage.actual_hunger) = Number(localStorage.max_hunger))
+// {
+//   console.log('succccccc');
+// }
+
+
+
+
+
 lock_upgrades_level();

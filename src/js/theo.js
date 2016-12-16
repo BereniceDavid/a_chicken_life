@@ -404,8 +404,9 @@ function classic_augmentation(m){
     var cost = Number(clicker.el.container.improvements_content.li[m].querySelector('.price_upgrade').innerHTML);
     var level_required = Number(clicker.el.container.improvements_content.li[m].querySelector('.level_required').innerHTML);
     console.log(level_required)
-    if(Number(localStorage.clickcount) >= cost && Number(localStorage.level) >= level_required){
-      chicken_happy_animation();
+    
+    if(Number(localStorage.clickcount) >= cost && Number(localStorage.level) >= level_required && (Number(localStorage.max_hunger) > Number(localStorage.actual_hunger) || Number(localStorage.max_thirst) > Number(localStorage.actual_thirst))){
+
       localStorage.clickcount = Number(localStorage.clickcount) - cost;
       clicker.el.container.score.innerHTML = localStorage.clickcount;
       if(level_required == 2 && m%2 == 0){
