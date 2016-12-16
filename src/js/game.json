@@ -3,15 +3,7 @@ var game = [
 		"level":0,
 		"habitat_upgrades": "",
 		"consumable_upgrades": "",
-		"habitat":[
-			{
-				"name":"Cardboard",
-				"source":"src/img/habitat/cardboard.svg",
-				"cost":0,
-				"description":"Well, we have to start somewhere...",
-				"bought":true
-			}
-		]
+		"habitat":""
 	},
 	{
 		"level":1,
@@ -23,19 +15,17 @@ var game = [
 		"level":2,
 		"habitat_upgrades":"",
 		"consumable_upgrades":[
-            {
+      {
 				"name":"Seeds",
 				"source":"src/img/upgrade/seeds.svg",
 				"cost":5,
-				"description":"<span class='effect'><span class='bigger'>+</span>30 food</span></br><span>A handful of seed to feed your poor little creature</span>",
-				"bought":false
+				"description":"<span class='effect'><span class='bigger'>+</span>30 food</span></br><span>A handful of seed to feed your poor little creature</span>"
 			},
 			{
 				"name":"Water",
 				"source":"src/img/upgrade/water.svg",
 				"cost":5,
-				"description":"<span class='effect'><span class='bigger'>+</span>15 drink</span></br><span>Give her something to drink you monster!</span>",
-				"bought":false
+				"description":"<span class='effect'><span class='bigger'>+</span>15 drink</span></br><span>Give her something to drink you monster!</span>"
 			}
 		],
 		"habitat":""
@@ -60,8 +50,7 @@ var game = [
 				"name":"Pizza",
 				"source":"src/img/upgrade/pizza.svg",
 				"cost":15,
-				"description":"<span class='effect'><span class='bigger'>+</span>80 food</span></br><span>Roberta… is it an Italian name?</span>",
-				"bought":false
+				"description":"<span class='effect'><span class='bigger'>+</span>80 food</span></br><span>Roberta… is it an Italian name?</span>"
 			}
 		],
 		"habitat":[
@@ -82,8 +71,7 @@ var game = [
 				"name":"Eggnog",
 				"source":"src/img/upgrade/eggnog.svg",
 				"cost":40,
-				"description":"<span class='effect'><span class='bigger'>+</span>50 drink</span></br><span>Give her something to drink you monster!</span>",
-				"bought":false
+				"description":"<span class='effect'><span class='bigger'>+</span>50 drink</span></br><span>Give her something to drink you monster!</span>"
 			}
 		],
 		"habitat": ""
@@ -96,8 +84,7 @@ var game = [
 				"name":"Noodles",
 				"source":"src/img/upgrade/noodle.svg",
 				"cost":70,
-				"description":"<span class='effect'>Fill up the food bar to the maximum for 12s</span></br><span>It will fill her up!</span>",
-				"bought":false
+				"description":"<span class='effect'>Fill up the hunger bar to the maximum for 12s</span></br><span>It will fill her up!</span>"
 			}
 		],
 		"habitat":""
@@ -106,15 +93,20 @@ var game = [
 		"level":8,
 		"habitat_upgrades":[
 			{
-				"name":"Golden egg",
+				"name":"Special egg",
 				"source":"src/img/upgrade/golden_egg.svg",
 				"cost":200,
-				"description":"<span class='effect'>Give one in ten chance to lay a golden egg,</br>two times more expansive than a normal egg</span></br><span>It's Shiiiiny ⊙‿⊙</span>",
-				"bought":false,
-				"incrementation":1
+				"description":"<span class='effect'>Give one in ten chance to lay a special egg,</br>that value more</span></br><span>It's Shiiiiny ⊙‿⊙</span>"
 			}
 		],
-		"consumable_upgrades":"",
+		"consumable_upgrades":[
+			{
+				"name":"Redpoule",
+				"source":"src/img/upgrade/red_poule.svg",
+				"cost":80,
+				"description":"<span class='effect'>Fill up the thirst bar to the maximum for 12s</span></br><span>Redpoule gives you eggs</span>"
+			}
+		],
 		"habitat":""
 	},
 	{
@@ -124,8 +116,7 @@ var game = [
 				"name":"Daily Lay",
 				"source":"src/img/upgrade/panier_oeuf.svg",
 				"cost":400,
-				"description":"",
-				"bought":false
+				"description":"<span class='effect'>Your chicken will lay every day</span></br><span>It's nice to have daily fresh eggs</span>"
 			}
 		],
 		"consumable_upgrades":"",
@@ -135,11 +126,10 @@ var game = [
 		"level":10,
 		"habitat_upgrades":[
 			{
-				"name":"Automatic Dispenser",
+				"name":"Automatic dispenser",
 				"source":"src/img/upgrade/Distributeur_niveau_1.svg",
 				"cost":600,
-				"description":"",
-				"bought":false
+				"description":"<span class='effect'>Refill a bit the food and the drink every day</span></br><span>Relieving you a bit from boring tasks</span>"
 			}
 		],
 		"consumable_upgrades":"",
@@ -148,9 +138,7 @@ var game = [
 				"name":"Cabane",
 				"source":"src/img/habitat/cabane.svg",
 				"cost":1000,
-				"description":"<span class='effect'>Unlock lvl 10</span></br><span>Freeeeeedom</span>",
-				"bought":false,
-				"incrementation":1
+				"description":"<span class='effect'>Upgrade the lay : 2 more eggs daily and per click</span></br><span>What a cute home you found</span>"
 			}
 		]
 	}

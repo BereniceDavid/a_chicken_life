@@ -344,6 +344,7 @@ body {
 	height: 590px;
 	z-index: 10;
 	background-color: #e67e22;
+	color: #fefefe;
 	overflow: auto;
 }
 
@@ -430,7 +431,6 @@ body {
 	top: 25%;
 	left: 59px;
 	transform: translateY(-40%);
-	color: #fefefe;
 	font-size: 18px;
 }
 
@@ -441,7 +441,6 @@ body {
 	left: 95px;
 	transform: translateY(-80%);
 	font-size: 18px;
-	color: #f1c40f;
 }
 
 .gold_icon
@@ -459,7 +458,6 @@ body {
 	top: 80%;
 	right: 60px;
 	transform: translateY(-80%);
-	color: #fefefe;
 	font-size: 15px;
 }
 
@@ -469,7 +467,6 @@ body {
 	top: 80%;
 	right: 10px;
 	transform: translateY(-80%);
-	color: #fefefe;
 	font-size: 18px;
 }
 
@@ -477,52 +474,106 @@ body {
 
 .pop-up-beginning
 {
-    position: absolute;
-    top: 15%;
-    left: 12%;
-    background-color: #e67e22;
-    width: 70%;
-    height: 70%;
-    z-index: 1000;
-    text-align: center;
-    border: 5px solid #d35400;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  position: absolute;
+  top: 15%;
+  left: 12%;
+  background-color: rgba(230, 126, 34, 0.96);
+  width: 60%;
+  height: 70%;
+  z-index: 1000;
+  text-align: center;
+  border: 5px solid #d07727;
+  border-radius: 20px;
 }
 
 .pop-up-beginning h1
 {
-    font-size: 50px;
-    color: #f1c40f;
-    margin-bottom: 50px;
-    margin-top: 10px;
+  font-size: 70px;
+  color: #fde170;
+  margin-top: 10px;
+	margin-bottom: 5px;
 }
 
-.pop-up-beginning p
+.pop-up-beginning p.subtitle
 {
-    font-size: 30px;
-    margin-bottom: 50px;
+	color:#fff2c7;
+  font-size: 30px;
+	margin-bottom: 70px;
+}
+
+.pop-up-beginning p.intro
+{
+	color:#ffd398;
+  font-size: 30px;
+	width: 80%;
+	margin: auto;
 }
 
 .pop-up-beginning .button-beginning
 {
+		color: #fdecd1;
     font-size: 30px;
     background-color: #f28d4f;
-    width: 70px;
-    height: 50px;
-    line-height: 40px; 
-    margin: 0px auto 50px auto;
-    border: 2px solid #f28d4f;
+    width: 90px;
+		height: 40px;
+    margin: 80px auto 50px auto;
+    border: 2px solid #e08029;
     border-radius: 10px;
-    transition: all 0.3s;
-    cursor: pointer
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .pop-up-beginning .button-beginning:hover
 {
-    border: 2px solid #d35400;
+    border: 2px solid #d07727;
+		color: #efdcbe;
+}
+
+/** End-screen **/
+
+.end-screen
+{
+  width: 100%;
+  height: 100%;
+  background-color: #e67e22;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+  text-align: center;
+  font-size: 50px;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  will-change:opacity;
+}
+
+.end-screen .loose
+{
+  margin-top: 50px;
+  padding: 0px 20px;
+}
+
+.end-screen-buttons
+{
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.end-screen-buttons div
+{
+  background-color: red;
+  height: 70px;
+  width: 300px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.end-screen-buttons a
+{
+  text-decoration: none;
 }
 
 /** chicken_zone **/
@@ -1035,12 +1086,15 @@ body {
 }
 
 .chicken_character.happy .normal_chicken .eyes,
-.chicken_character.happy .sad_chicken .eyes
+.chicken_character.happy .sad_chicken .eyes,
+.chicken_picture.happy .normal_chicken .eyes,
+.chicken_picture.happy .sad_chicken .eyes
 {
 	opacity: 0;
 }
 
-.chicken_character.happy .happy_chicken
+.chicken_character.happy .happy_chicken,
+.chicken_picture.happy .happy_chicken
 {
 	opacity: 1;
 }

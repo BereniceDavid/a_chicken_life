@@ -35,9 +35,16 @@ function click_incrementation(){
 
 /** buy_habitats **/
 
+
 var home_content = document.querySelector('.consumables_content'),
     home_buy     = home_content.querySelectorAll('ul li'),
     home_change  = document.querySelector('.container_habitat img');
+
+if(localStorage.house == undefined)
+  localStorage.house = 0;
+for(var y = 0; y < localStorage.house; y++){
+  home_buy[y].style.display = "none";
+}
 
 for (q = 0; q < home_buy.length; q++){
   home_buy[q].addEventListener('click', function(){
@@ -46,6 +53,7 @@ for (q = 0; q < home_buy.length; q++){
         logo_home  = this.querySelector('.logo_upgrade img').getAttribute('src');
 
         if (Number(localStorage.level) >= lvl_home && Number(localStorage.clickcount) >= cost_home){
+            localStorage.house = Number(localStorage.house) + 1;
             home_change.setAttribute('src', logo_home);
             localStorage.clickcount = Number(localStorage.clickcount) - cost_home;
             clicker.el.container.score.innerHTML = localStorage.clickcount;
