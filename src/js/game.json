@@ -145,8 +145,8 @@ var game = [
 		"consumable_upgrades":"",
 		"habitat":[
 			{
-				"name":"Open air plot",
-				"source":"src/img/habitat/cage.svg",
+				"name":"Cabane",
+				"source":"src/img/habitat/cabane.svg",
 				"cost":1000,
 				"description":"<span class='effect'>Unlock lvl 10</span></br><span>Freeeeeedom</span>",
 				"bought":false,
