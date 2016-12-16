@@ -41,6 +41,11 @@ clicker.el.container.boost_content.li = clicker.el.container.boost_content.query
 clicker.el.container.pop_up_beginning = clicker.el.container.querySelector('.pop-up-beginning');
 clicker.el.container.pop_up_beginning.button_beginning = clicker.el.container.pop_up_beginning.querySelector('.button-beginning');
 
+/**end-screen**/
+clicker.el.container.twitter = clicker.el.container.querySelector('.custom-tweet-button a');
+clicker.el.container.end_screen = clicker.el.container.querySelector('.end-screen');
+clicker.el.container.end_screen.retry = clicker.el.container.querySelector('.retry');
+
 //localStorage.clear();
 console.log(localStorage.level);
 
@@ -254,7 +259,7 @@ function chicken_hunger_animation(){
     if ( !chicken.elements.picture.classList.contains('dead') )
       chicken.elements.picture.classList.add('dead');
 
-    setTimeout(function(){localStorage.clear();window.location.reload();}, 2000);
+    setTimeout(dead, 2000);
   }
 }
 
@@ -335,7 +340,7 @@ function chicken_thirst_animation(){
     if ( !chicken.elements.picture.classList.contains('dead') )
       chicken.elements.picture.classList.add('dead');
 
-    setTimeout(function(){localStorage.clear();window.location.reload();}, 2000);
+    setTimeout(dead, 2000);
   }
 }
 
@@ -366,6 +371,16 @@ function thirst_augmentation(augmentation){
 function thirst_actualisation(){
   clicker.el.container.gamer_interface.current_thirst.innerHTML = localStorage.actual_thirst;
   clicker.el.container.gamer_interface.max_thirst.innerHTML = localStorage.max_thirst;
+}
+
+function thirst_max()
+{
+  thirst_max_upgrade = true;
+  localStorage.actual_thirst = localStorage.max_thirst;
+  clicker.el.container.gamer_interface.thirst_bar.style.transform = 'scaleX(' + Number(localStorage.actual_thirst)/Number(localStorage.max_thirst) + ')';
+  reverse_thirst_chicken_animation();
+  thirst_actualisation();
+  var time = setTimeout(function(){ thirst_max_upgrade = false }, 12000);
 }
 
 /**************************
@@ -407,6 +422,9 @@ function classic_augmentation(m){
       }
       else if(level_required == 7 && m%2 == 0){
         hunger_max();
+      }
+      else if(level_required == 8 && m%2 == 1){
+        thirst_max();
       }
     }
   }
@@ -511,7 +529,7 @@ function dispenser(cost, m, level_required){
   clicker.el.container.boost_content.li[m].querySelector('.number_upgrade').innerHTML = Number(localStorage.automatic_food);
   clicker.el.container.boost_content.li[m].querySelector('.price_upgrade').innerHTML = cost * 4;
   clicker.el.container.boost_content.li[m].querySelector('.level_required').innerHTML = (level_required + 2);
-  
+
   if(Number(localStorage.automatic_food) == 1){
     clicker.el.container.boost_content.li[m].querySelector('img').setAttribute('src', 'src/img/upgrade/Distributeur_niveau_2.svg');
   }
@@ -567,7 +585,7 @@ function init_upgrade(){
   else if(Number(localStorage.upgrade_3) == 2){
     clicker.el.container.boost_content.li[0].querySelector('img').setAttribute('src', 'src/img/upgrade/platine-egg.svg');
   }
-  
+
   if(Number(localStorage.automatic_food) == 1){
     clicker.el.container.boost_content.li[2].querySelector('img').setAttribute('src', 'src/img/upgrade/Distributeur_niveau_2.svg');
   }
@@ -575,3 +593,20 @@ function init_upgrade(){
     clicker.el.container.boost_content.li[2].querySelector('img').setAttribute('src', 'src/img/upgrade/Distributeur_niveau_3.svg');
   }
 }
+
+/**************
+
+End game
+
+**************/
+
+function dead(){
+  clicker.el.container.end_screen.style.opacity = '1';
+  clicker.el.container.end_screen.style.display = 'block';
+  clicker.el.container.twitter.setAttribute('href', href="http://twitter.com/share?url=http%3A%2F%2Fchicken-life.com&text=Avec%20Roberta%20j'ai%20fait%20un%20score%20de%20" + localStorage.clickcount + "%20chicken%20golds%20!%20&hashtags=Roberta,ChickenLife");
+}
+
+clicker.el.container.end_screen.retry.addEventListener('click', function(){
+  localStorage.clear();
+  window.location.reload();
+});
