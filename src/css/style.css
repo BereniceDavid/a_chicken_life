@@ -344,6 +344,7 @@ body {
 	height: 590px;
 	z-index: 10;
 	background-color: #e67e22;
+	color: #fefefe;
 	overflow: auto;
 }
 
@@ -430,7 +431,6 @@ body {
 	top: 25%;
 	left: 59px;
 	transform: translateY(-40%);
-	color: #fefefe;
 	font-size: 18px;
 }
 
@@ -441,7 +441,6 @@ body {
 	left: 95px;
 	transform: translateY(-80%);
 	font-size: 18px;
-	color: #f1c40f;
 }
 
 .gold_icon
@@ -459,7 +458,6 @@ body {
 	top: 80%;
 	right: 60px;
 	transform: translateY(-80%);
-	color: #fefefe;
 	font-size: 15px;
 }
 
@@ -469,7 +467,6 @@ body {
 	top: 80%;
 	right: 10px;
 	transform: translateY(-80%);
-	color: #fefefe;
 	font-size: 18px;
 }
 

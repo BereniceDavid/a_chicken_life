@@ -45,6 +45,7 @@ for(var k = 0; k < game.length; k++) {
 var hover_description = document.querySelector('.hover_description'),
 		all_li_upgrade = document.querySelectorAll('.list_upgrades ul li'),
 		all_li_level = document.querySelectorAll('.list_upgrades ul li span.level_required'),
+		all_li_cost = document.querySelectorAll('.list_upgrades ul li span.price_upgrade'),
 		this_li_name = "";
 
 //Detect mouse position
@@ -102,10 +103,14 @@ function lock_upgrades_level() {
 
 		if( all_li_level[p].innerHTML > Number(localStorage.level) ) {
 			all_li_upgrade[p].style.backgroundColor = "#d07626";
-			all_li_upgrade[p].style.color = "#7c7c7c";
+			all_li_upgrade[p].style.color = "#e09858";
+			all_li_upgrade[p].style.opacity = 0.8;
+			all_li_cost[p].style.color = "#e09858";
 		} else {
 			all_li_upgrade[p].style.backgroundColor = "#f28d4f";
 			all_li_upgrade[p].style.color = "#fefefe";
+			all_li_upgrade[p].style.opacity = 1;
+			all_li_cost[p].style.color = "#f1c40f";
 		}
 	}
 }
