@@ -23,7 +23,7 @@ var game = [
 		"level":2,
 		"habitat_upgrades":"",
 		"consumable_upgrades":[
-			{
+            {
 				"name":"Seeds",
 				"source":"src/img/upgrade/seeds.svg",
 				"cost":5,
@@ -110,7 +110,8 @@ var game = [
 				"source":"src/img/upgrade/golden_egg.svg",
 				"cost":200,
 				"description":"<span class='effect'>Give one in ten chance to lay a golden egg,</br>two times more expansive than a normal egg</span></br><span>It's Shiiiiny ⊙‿⊙</span>",
-				"bought":false
+				"bought":false,
+				"incrementation":1
 			}
 		],
 		"consumable_upgrades":"",
@@ -148,7 +149,8 @@ var game = [
 				"source":"src/img/habitat/cage.svg",
 				"cost":1000,
 				"description":"<span class='effect'>Unlock lvl 10</span></br><span>Freeeeeedom</span>",
-				"bought":false
+				"bought":false,
+				"incrementation":1
 			}
 		]
 	}

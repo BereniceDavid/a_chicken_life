@@ -35,11 +35,6 @@ function click_incrementation(){
 
 /** buy_habitats **/
 
-// localStorage.level;
-// console.log(localStorage.level);
-
-//console.log(Number(localStorage.clickcount));
-
 var home_content = document.querySelector('.consumables_content'),
     home_buy     = home_content.querySelectorAll('ul li'),
     home_change  = document.querySelector('.container_habitat img');
