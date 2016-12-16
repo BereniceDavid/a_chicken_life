@@ -242,14 +242,31 @@ var cackle = new Audio('./src/music/cackle_1.mp3');
 
 /** btn_mute **/
 
-var muted = false;
+if(localStorage.muted == undefined)
+  localStorage.muted = 0;
+console.log(Boolean(Number(localStorage.muted)))
 
 var mute_btn   = document.querySelector('.mute_btn');
 	speaker    = mute_btn.querySelectorAll('.speaker');
 	sound_wave = mute_btn.querySelectorAll('.sound_wave');
 	soundtrack = document.querySelector('audio.soundtrack');
 
-if (muted == false) {
+if (Boolean(Number(localStorage.muted)) == true)
+	{
+		for (g = 0; g < sound_wave.length ; g++){
+          console.log('sarentreTrue')
+			sound_wave[g].style.opacity = '0';
+		}
+	}
+	else {
+		for (g = 0; g < sound_wave.length ; g++){
+          console.log('sarentre')
+			sound_wave[g].style.opacity = '1';
+		}	
+	}
+
+
+if (Boolean(Number(localStorage.muted)) == false) {
 	cackle.volume = 1;
 	soundtrack.volume = 0.7;
 } else {
@@ -266,7 +283,7 @@ chicken.elements.container.addEventListener( 'click', function( event )
 {
 	if (day_state == 'day') {
 		chicken_cackle_random();
-		if (muted == false) {
+		if (Boolean(Number(localStorage.muted)) == false) {
 			cackle.volume = 1;
 		} else {
 			cackle.volume = 0;
@@ -287,12 +304,12 @@ chicken.elements.container.addEventListener( 'click', function( event )
 
 mute_btn.addEventListener('click', function(){
 
-	if (muted == true)
+	if (Boolean(Number(localStorage.muted)) == true)
 	{
 		for (g = 0; g < sound_wave.length ; g++){
 			sound_wave[g].style.opacity = '1';
 		}
-		muted = false;
+		localStorage.muted = 0;
 		soundtrack.volume = 0.7;
 		cackle.volume = 1;
 	}
@@ -300,89 +317,9 @@ mute_btn.addEventListener('click', function(){
 		for (g = 0; g < sound_wave.length ; g++){
 			sound_wave[g].style.opacity = '0';
 		}	
-		muted = true;
+		localStorage.muted = 1;
 		soundtrack.volume = 0;
 		cackle.volume = 0;
 	}
 
 });
-
-// var food = 10;
-// var has_bought_element = false;
-
-// //faut faire le code : quand on achète un élément on passe la var has_bought_element à true pour un temps très court (pour faire apparaitre les coeurs et les faire disparaitre après) --> sauf si il dort --> ne pas passer à true : window set timeout
-
-// setInterval(function()
-// { 
-// 	if ( (food < 5) && (food > 0) ) {
-// 		if ( !chicken.elements.container.classList.contains('sad') )
-// 			chicken.elements.container.classList.add('sad');
-// 	}
-// 	else if (food <= 0)
-// 	{
-// 		if ( chicken.elements.container.classList.contains('sad') )
-// 			chicken.elements.container.classList.remove('sad');
-// 		if ( !chicken.elements.container.classList.contains('dead') )
-// 			chicken.elements.container.classList.add('dead');
-// 	}
-// 	else
-// 	{
-// 		if ( chicken.elements.container.classList.contains('sad') )
-// 			chicken.elements.container.classList.remove('sad');
-// 		if ( chicken.elements.container.classList.contains('dead') )
-// 			chicken.elements.container.classList.remove('dead');
-// 	}
-
-	
-// 	if (has_bought_element == true)
-// 	{
-// 		if ( !chicken.elements.container.classList.contains('happy') )
-// 			chicken.elements.container.classList.add('happy');
-// 	}
-
-
-//var food = 10;
-//var sleeping = false;
-//var has_bought_element = false;
-
-//faut faire le code : quand on achète un élément on passe la var has_bought_element à true pour un temps très court (pour faire apparaitre les coeurs et les faire disparaitre après) --> sauf si il dort --> ne pas passer à true : window set timeout
-
-//setInterval(function()
-//{ 
-//	if ( (food < 5) && (food > 0) ) {
-//		if ( !chicken.elements.container.classList.contains('sad') )
-//			chicken.elements.container.classList.add('sad');
-//	}
-//	else if (food <= 0)
-//	{
-//		if ( chicken.elements.container.classList.contains('sad') )
-//			chicken.elements.container.classList.remove('sad');
-//		if ( !chicken.elements.container.classList.contains('dead') )
-//			chicken.elements.container.classList.add('dead');
-//	}
-//	else
-//	{
-//		if ( chicken.elements.container.classList.contains('sad') )
-//			chicken.elements.container.classList.remove('sad');
-//		if ( chicken.elements.container.classList.contains('dead') )
-//			chicken.elements.container.classList.remove('dead');
-//	}
-//	
-//	if (sleeping == true)
-//	{
-//		if ( !chicken.elements.container.classList.contains('sleeping') )
-//			chicken.elements.container.classList.add('sleeping');
-//	}
-//	else
-//	{
-//		if ( chicken.elements.container.classList.contains('sleeping') )
-//			chicken.elements.container.classList.remove('sleeping');
-//	}
-//	
-//	if (has_bought_element == true)
-//	{
-//		if ( !chicken.elements.container.classList.contains('happy') )
-//			chicken.elements.container.classList.add('happy');
-//	}
-//	
-//}, 1000);
