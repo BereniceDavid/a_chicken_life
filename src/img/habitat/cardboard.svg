@@ -11,11 +11,11 @@
 	.st5{display:inline;}
 	.st6{fill:#262635;}
 	.st7{fill:#F9F7AA;}
-	.st8{display:inline;opacity:0.18;fill:url(#SVGID_2_);}
-	.st9{opacity:0.44;fill:#F9BF3E;stroke:#EAB03D;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st8{display:inline;opacity:0.18;fill:url(#SVGID_2_);enable-background:new    ;}
+	.st9{fill:#DBA952;stroke:#C1913D;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
 	.st10{fill:#DDA83E;stroke:#C1913D;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
 </style>
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="462.6788" y1="793.4171" x2="462.6788" y2="343.5992">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="462.7" y1="206.6" x2="462.7" y2="656.4" gradientTransform="matrix(1 0 0 -1 0 1000)">
 	<stop  offset="0" style="stop-color:#050039"/>
 	<stop  offset="8.213538e-02" style="stop-color:#030025"/>
 	<stop  offset="0.1859" style="stop-color:#020014"/>
@@ -35,7 +35,8 @@
 		<ellipse class="st7" cx="551.7" cy="402.8" rx="15.5" ry="16.5"/>
 		<rect x="549" y="346.1" class="st6" width="2.9" height="30.8"/>
 	</g>
-	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="570.0204" y1="653.0895" x2="570.0204" y2="407.0558">
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="569.9896" y1="346.9105" x2="569.9896" y2="592.9442" gradientTransform="matrix(1 0 0 -1 0 1000)">
 		<stop  offset="0" style="stop-color:#000000;stop-opacity:0"/>
 		<stop  offset="1" style="stop-color:#FFF76A"/>
 	</linearGradient>
