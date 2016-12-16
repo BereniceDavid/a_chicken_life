@@ -3,7 +3,6 @@ var fill_location_list = upgrades.querySelectorAll('.list_upgrades div ul');
 //fill_location_list[1] --> consumables_content :  habitat (habitat)
 //fill_location_list[2] --> boosts_content : decoration (habitat_upgrades)
 
-//console.log(fill_location_list);
 var upgrade = '';
 
 //fill var upgrade with the upgrade element we want to display
@@ -98,6 +97,7 @@ if (window.matchMedia("(max-width: 39.9375em)").matches) {
 	}
 }
 
+//Grey aspect on lock upgrades (level not hight enouth)
 function lock_upgrades_level() {
 	for(var p = 0; p < all_li_upgrade.length; p++) {
 
