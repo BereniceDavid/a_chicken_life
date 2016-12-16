@@ -3,18 +3,7 @@ var clicker = {};
 clicker.el = {};
 clicker.el.container = document.querySelector('.game_content');
 clicker.el.container.chicken_house = clicker.el.container.querySelector('.chicken_character');
-//clicker.el.container.chicken_house.oeuf = clicker.el.container.chicken_house.querySelector('.oeuf');
 clicker.el.container.score = clicker.el.container.querySelector('.number_eggs');
-
-/**UPGRADES**/
-//clicker.el.container.upgrades = clicker.el.container.querySelector('.upgrades');
-//clicker.el.container.upgrades.upgrade_1 = clicker.el.container.upgrades.querySelector('.upgrade-1');
-//clicker.el.container.upgrades.upgrade_1.cost = clicker.el.container.upgrades.upgrade_1.querySelector('.egg-cost');
-//clicker.el.container.upgrades.upgrade_1.egg_incrementation = clicker.el.container.upgrades.upgrade_1.querySelector('.egg-incrementation');
-//
-//clicker.el.container.upgrades.upgrade_2 = clicker.el.container.upgrades.querySelector('.upgrade-2');
-//clicker.el.container.upgrades.upgrade_2.cost = clicker.el.container.upgrades.upgrade_2.querySelector('.upgrade-productivity-cost');
-//clicker.el.container.upgrades.upgrade_2.time_incrementation = clicker.el.container.upgrades.upgrade_2.querySelector('.time-incrementation');
 
 /**GAMER INTERFACE**/
 clicker.el.container.gamer_interface = clicker.el.container.querySelector('.stats');
@@ -39,25 +28,6 @@ clicker.el.container.gamer_interface.xp_bar = clicker.el.container.querySelector
 clicker.el.container.gamer_interface.level = clicker.el.container.querySelector('.current_lvl');
 clicker.el.container.gamer_interface.current_xp = clicker.el.container.gamer_interface.querySelector('.current_xp');
 clicker.el.container.gamer_interface.total_xp = clicker.el.container.gamer_interface.querySelector('.total_xp');
-
-
-//clicker.el.container.gamer_interface.actual_xp = clicker.el.container.querySelector('.actual-xp');
-
-/**Food**/
-//clicker.el.container.upgrades.food = clicker.el.container.upgrades.querySelector('.food');
-//clicker.el.container.upgrades.food.food_cost = clicker.el.container.upgrades.food.querySelector('.food-cost');
-//
-///**God**/
-//clicker.el.container.upgrades.upgrade_3 = clicker.el.container.upgrades.querySelector('.upgrade-3');
-//clicker.el.container.upgrades.upgrade_3.cost = clicker.el.container.upgrades.upgrade_3.querySelector('.gold-egg-cost');
-//
-///**House**/
-//clicker.el.container.house = clicker.el.container.querySelector('.house');
-//clicker.el.container.house.house_cost = clicker.el.container.house.querySelector('.house-cost');
-//
-///**Automatic Food**/
-//clicker.el.container.automatic_food = clicker.el.container.querySelector('.automatic-food');
-//clicker.el.container.automatic_food.automatic_food_cost = clicker.el.container.querySelector('.automatic-food-cost');
 
 /**Improvment content**/
 clicker.el.container.improvements_content = clicker.el.container.querySelector('.improvements_content');
@@ -91,7 +61,7 @@ function init(){
 
   /**XP**/
   if(localStorage.level == undefined || localStorage.level == 0){
-    localStorage.level = 9;
+    localStorage.level = 0;
     clicker.el.container.gamer_interface.xp_bar.setAttribute("value", 5);
   }
   else{
@@ -137,19 +107,6 @@ function init(){
   thirst_actualisation();
   chicken_thirst_animation();
 
-  //  /**Upgrade 1**/
-  //  clicker.el.container.upgrades.upgrade_1.cost.innerHTML = 50 * Number(localStorage.incrementation);
-  //  clicker.el.container.upgrades.upgrade_1.egg_incrementation.innerHTML = Number(localStorage.incrementation) + 1;
-  //
-  //  /**Upgrade 2**/
-  //  clicker.el.container.upgrades.upgrade_2.cost.innerHTML = 150 * ((Number(localStorage.upgrade_2) + 1) * 3);
-  //
-  //  if(Number(localStorage.upgrade_2) == 0){
-  //    clicker.el.container.upgrades.upgrade_2.time_incrementation.innerHTML = '2';
-  //  }
-  //  else{
-  //    clicker.el.container.upgrades.upgrade_2.time_incrementation.innerHTML = (Number(localStorage.upgrade_2_delay) / (Number(localStorage.upgrade_2)))/1000;
-  //  }
   clicker.el.container.score.innerHTML = localStorage.clickcount;
 
   //  level_check();
@@ -167,11 +124,6 @@ init();
 clicker.el.container.chicken_house.addEventListener('click', function(){
   if(chicken.elements.container.classList.contains('dead') == false && day_state == "day"){
     var random = Math.floor(Math.random()*10);
-    //  clicker.el.container.chicken_house.oeuf.style.animationPlayState = "running";
-    //  var elm = this.lastElementChild;
-    //  var newone = elm.cloneNode(true);
-    //  elm.parentNode.replaceChild(newone, elm);
-
     if(random == 0 && Boolean(Number(localStorage.upgrade_3)) == true)
       gold_click_incrementation();
     else
@@ -204,6 +156,18 @@ clicker.el.container.pop_up_beginning.button_beginning.addEventListener('click',
 
 /*************
 
+Chicken animation
+
+*************/
+
+function chicken_happy_animation(){
+  chicken.elements.container.classList.add('happy');
+  chicken.elements.picture.classList.add('happy');
+  var remove = setTimeout(function(){chicken.elements.container.classList.remove('happy');chicken.elements.picture.classList.remove('happy');}, 1000);
+}
+
+/*************
+
 XP Gestion
 
 *************/
@@ -211,20 +175,11 @@ XP Gestion
 function level_check_house(incrementation){
   localStorage.actual_xp = Number(localStorage.actual_xp) + incrementation;
   var xp_max = clicker.el.container.gamer_interface.xp_bar.getAttribute('value');
-  //  if(localStorage.actual_xp >= xp_max && Number(localStorage.level) == 4 && clicker.el.container.house.style.display == 'block'){
-  //    localStorage.actual_xp = xp_max;
-  //    clicker.el.container.gamer_interface.actual_xp.innerHTML = localStorage.actual_xp;
-  //    clicker.el.container.gamer_interface.xp_bar.style.transform = 'scaleX(' + Number(localStorage.actual_xp)/Number(clicker.el.container.gamer_interface.xp_max.innerHTML) + ')';
-  //  }
-  //  else{
-  //    xp();
-  //  }
   xp();
 }
 
 function xp(){
-  var xp_max = Number(clicker.el.container.gamer_interface.xp_bar.getAttribute('value'));
-  //  clicker.el.container.gamer_interface.actual_xp.innerHTML = localStorage.actual_xp;  
+  var xp_max = Number(clicker.el.container.gamer_interface.xp_bar.getAttribute('value')); 
   clicker.el.container.gamer_interface.xp_bar.style.transform = 'scaleX(' + Number(localStorage.actual_xp)/xp_max + ')';
   xp_actualisation();
   if(localStorage.actual_xp >= xp_max){
@@ -251,7 +206,7 @@ function xp(){
     localStorage.actual_thirst = Number(localStorage.actual_thirst) + 10;
     clicker.el.container.gamer_interface.thirst_bar.style.transform = 'scaleX(' + Number(localStorage.actual_thirst)/localStorage.max_thirst + ')';
 
-    //    level_check();
+    lock_upgrades_level();
   }
 }
 
@@ -435,6 +390,7 @@ function classic_augmentation(m){
     var level_required = Number(clicker.el.container.improvements_content.li[m].querySelector('.level_required').innerHTML);
     console.log(level_required)
     if(Number(localStorage.clickcount) >= cost && Number(localStorage.level) >= level_required){
+      chicken_happy_animation();
       localStorage.clickcount = Number(localStorage.clickcount) - cost;
       clicker.el.container.score.innerHTML = localStorage.clickcount;
       if(level_required == 2 && m%2 == 0){
@@ -531,11 +487,11 @@ function daily_egg(cost, m, level_required){
 
 function upgrade_2_auto(){
   if(Boolean(Number(localStorage.upgrade_2)) == true && day_state == "day"){
-    localStorage.clickcount = Number(localStorage.clickcount)+1;
+    localStorage.clickcount = Number(localStorage.clickcount) + Number(localStorage.incrementation);
     clicker.el.container.score.innerHTML = localStorage.clickcount;
-    hunger(1);
-    thirst(1);
-    level_check_house(1);
+    hunger(Number(localStorage.incrementation));
+    thirst(Number(localStorage.incrementation));
+    level_check_house(Number(localStorage.incrementation));
   }
 }
 
